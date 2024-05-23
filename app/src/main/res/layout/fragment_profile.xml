@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/peach_gradient_bg1"
+        android:paddingHorizontal="122dp"
+        tools:context=".ProfileFragment">
+
+        <ImageView
+            android:id="@+id/ivSongPic"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/corner_radius"
+            android:src="@drawable/minji" />
+
+        <TextView
+            android:id="@+id/tvSongTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivSongPic"
+            android:layout_marginVertical="@dimen/twenty_dp"
+            android:fontFamily="@font/extrabold_poppins"
+            android:text="Kim Minji"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_two_sp" />
+
+        <TextView
+            android:id="@+id/tvSongSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSongTitle"
+            android:layout_marginBottom="@dimen/forty_dp"
+            android:fontFamily="@font/regular_kalam"
+            android:text="Hi, I'm Minji"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSongSinger"
+            android:background="@drawable/corner_radius"
+            android:elevation="@dimen/six_dp"
+            android:orientation="vertical"
+            android:padding="@dimen/ten_dp">
+
+
+            <TextView
+                android:id="@+id/tvDOB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_poppins"
+                android:text="DOB: 7 May 2024" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDOB"
+                android:fontFamily="@font/medium_poppins"
+                android:text="Gender: Female" />
+
+            <TextView
+                android:id="@+id/tvJoinedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvGender"
+                android:fontFamily="@font/medium_poppins"
+                android:text="Joined: 24 Aug 2021" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/green"
+            android:elevation="4dp"
+            android:fontFamily="@font/bold_chakrapetch"
+            android:text="Log Out"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sixteen_sp"
+            android:translationZ="6dp"
+            app:cornerRadius="20dp" />
+    </RelativeLayout>
+</layout>

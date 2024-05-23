@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/red_blue_gradient_bg"
+        android:paddingHorizontal="90dp"
+        tools:context=".IndividualSongFragment">
+
+        <ImageView
+            android:id="@+id/ivSongPic"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/yoasobi" />
+
+        <TextView
+            android:id="@+id/tvSongTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivSongPic"
+            android:fontFamily="@font/extrabold_poppins"
+            android:text="Idol"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/tvSongSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSongTitle"
+            android:fontFamily="@font/medium_poppins"
+            android:text="Yoasobi"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</layout>
