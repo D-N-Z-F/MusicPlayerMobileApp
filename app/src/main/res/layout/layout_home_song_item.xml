@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivSongPic"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/yoasobi" />
+
+        <TextView
+            android:id="@+id/tvSongTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivSongPic"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/semibold_poppins"
+            android:text="Idol"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvSongSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSongTitle"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/light_poppins"
+            android:text="Yoasobi"
+            android:textColor="@color/dark_grey"
+            android:textSize="10sp" />
+    </RelativeLayout>
+</layout>
