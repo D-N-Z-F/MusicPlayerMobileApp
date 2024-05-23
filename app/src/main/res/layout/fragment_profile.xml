@@ -15,25 +15,36 @@
             android:layout_height="180dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:src="@drawable/minji"
             android:background="@drawable/corner_radius"
-            android:src="@drawable/minji" />
+            android:elevation="@dimen/six_dp"/>
 
         <TextView
-            android:id="@+id/tvSongTitle"
+            android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ivSongPic"
-            android:layout_marginVertical="@dimen/twenty_dp"
             android:fontFamily="@font/extrabold_poppins"
             android:text="Kim Minji"
             android:textColor="@color/black"
             android:textSize="@dimen/twenty_two_sp" />
 
+
+        <include
+            android:id="@+id/subscriptionStatus"
+            layout="@layout/layout_subscription_item"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/tvUserName"
+            android:layout_centerHorizontal="true" />
+
         <TextView
-            android:id="@+id/tvSongSinger"
+            android:id="@+id/tvBio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvSongTitle"
+            android:layout_below="@id/subscriptionStatus"
+            android:layout_marginTop="@dimen/thirty_dp"
             android:layout_marginBottom="@dimen/forty_dp"
             android:fontFamily="@font/regular_kalam"
             android:text="Hi, I'm Minji"
@@ -42,9 +53,9 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvSongSinger"
+            android:layout_below="@id/tvBio"
             android:background="@drawable/corner_radius"
             android:elevation="@dimen/six_dp"
             android:orientation="vertical"
