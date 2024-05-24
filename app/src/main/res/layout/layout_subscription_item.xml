@@ -4,7 +4,9 @@
     android:layout_width="70dp"
     android:layout_height="25dp"
     android:layout_gravity="center"
-    app:cardCornerRadius="@dimen/four_dp">
+    android:translationZ="@dimen/six_dp"
+    app:cardCornerRadius="@dimen/four_dp"
+    app:strokeColor="@android:color/transparent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,6 +19,7 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/medium_poppins"
             android:text="Premium"
+            android:textColor="@color/black"
             android:textSize="@dimen/twelve_sp" />
     </RelativeLayout>
 

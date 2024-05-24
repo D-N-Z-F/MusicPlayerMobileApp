@@ -5,4 +5,10 @@
         <item name="fontFamily">@font/bold_chakrapetch</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="Cut" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
 </resources>

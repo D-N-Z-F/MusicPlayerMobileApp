@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue_gradient_bg1"
+    android:paddingHorizontal="@dimen/thirty_dp"
+    tools:context=".SignUpFragment">
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="@dimen/thirty_dp"
+        android:fontFamily="@font/semibold_poppins"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textSize="@dimen/forty_sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiUsername"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSignUp"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:hint="Username"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@android:color/transparent"
+        app:shapeAppearance="@style/Cut">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiGender"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiUsername"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:hint="Gender"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@android:color/transparent"
+        app:shapeAppearance="@style/Cut">
+`
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiAge"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiGender"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:hint="Age"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@android:color/transparent"
+        app:shapeAppearance="@style/Cut">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiAge"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:hint="Password"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@android:color/transparent"
+        app:endIconMode="password_toggle"
+        app:shapeAppearance="@style/Cut">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiConfirmPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiPassword"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:hint="Confirm Password"
+        app:boxBackgroundColor="@android:color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@android:color/transparent"
+        app:endIconMode="password_toggle"
+        app:shapeAppearance="@style/Cut">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiConfirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/forty_dp"
+        android:backgroundTint="@color/green"
+        android:elevation="4dp"
+        android:fontFamily="@font/bold_chakrapetch"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:translationZ="6dp"
+        app:cornerRadius="20dp" />
+
+</RelativeLayout>

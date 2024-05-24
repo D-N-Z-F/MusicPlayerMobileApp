@@ -32,12 +32,8 @@ class ContainerFragment : Fragment() {
             )
         )
 
-        val tabIcons = listOf(
-            R.drawable.ic_home,
-            R.drawable.ic_search,
-            R.drawable.ic_playlist,
-            R.drawable.ic_profile
-        )
+        val tabIcons = listOf(R.drawable.ic_home, R.drawable.ic_search,
+            R.drawable.ic_playlist, R.drawable.ic_profile)
 
         val tabTexts = listOf("Home", "Search", "Playlist", "Profile")
 

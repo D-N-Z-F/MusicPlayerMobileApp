@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvSearch"
             android:layout_marginBottom="@dimen/thirty_dp"
-            android:background="@drawable/search_box"
+            android:background="@drawable/input_box"
             android:iconifiedByDefault="false"
             android:queryHint="What do you want to listen to?" />
 
