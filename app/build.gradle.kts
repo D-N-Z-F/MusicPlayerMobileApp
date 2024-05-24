@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
+    id ("kotlinx-serialization")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -69,4 +70,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     annotationProcessor(libs.androidx.room.compiler)
     kapt("androidx.room:room-compiler:2.6.1")
+
+    // Serialisation
+    implementation(libs.kotlinx.serialization.json)
+
+    // Gson
+    implementation(libs.gson)
 }

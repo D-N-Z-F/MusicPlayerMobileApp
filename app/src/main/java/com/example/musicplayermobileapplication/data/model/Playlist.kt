@@ -1,5 +1,6 @@
 package com.example.musicplayermobileapplication.data.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,5 +11,5 @@ data class Playlist(
     val userId: Int,
     val title: String,
     val desc: String,
-    val songs: List<Song>
+    val songs: List<Song> = emptyList()
 )

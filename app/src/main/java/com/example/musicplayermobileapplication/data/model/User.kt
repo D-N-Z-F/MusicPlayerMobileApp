@@ -1,7 +1,9 @@
 package com.example.musicplayermobileapplication.data.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
 @Entity
@@ -14,8 +16,8 @@ data class User(
     val bio: String,
     val gender: Genders,
     val status: Statuses,
-    val playlists: List<Playlist>,
-    val favourites: List<Song>,
+    val playlists: List<Playlist> = emptyList(),
+    val favourites: List<Song> = emptyList(),
     val joinedAt: LocalDateTime = LocalDateTime.now()
 )
 enum class Genders { MALE, FEMALE, NON_BINARY, UNDISCLOSED }
