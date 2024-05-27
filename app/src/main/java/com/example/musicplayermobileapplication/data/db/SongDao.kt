@@ -13,9 +13,9 @@ interface SongDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addSong(song: Song)
     @Query("SELECT * FROM Song")
-    fun getAllSongs()
+    fun getAllSongs(): List<Song>
     @Query("SELECT * FROM Song WHERE id = :id")
-    fun getSongById(id: Int)
+    fun getSongById(id: Int): Song?
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateSong(song: Song)
     @Delete

@@ -1,4 +1,4 @@
-package com.example.musicplayermobileapplication.ui
+package com.example.musicplayermobileapplication.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,9 @@ import com.example.musicplayermobileapplication.databinding.FragmentContainerBin
 import com.example.musicplayermobileapplication.databinding.LayoutTabItemBinding
 import com.example.musicplayermobileapplication.ui.adapter.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ContainerFragment : Fragment() {
     private lateinit var binding: FragmentContainerBinding
     override fun onCreateView(

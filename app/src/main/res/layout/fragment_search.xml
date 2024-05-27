@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/peach_gradient_bg1"
         android:padding="20dp"
-        tools:context=".ui.SearchFragment">
+        tools:context=".ui.fragments.SearchFragment">
 
         <TextView
             android:id="@+id/tvSearch"

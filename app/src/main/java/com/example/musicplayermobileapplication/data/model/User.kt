@@ -12,10 +12,10 @@ data class User(
     val id: Int? = null,
     val username: String,
     val password: Int,
-    val age: String,
+    val age: Int,
     val bio: String,
     val gender: Genders,
-    val status: Statuses,
+    val status: Statuses = Statuses.NORMAL,
     val playlists: List<Playlist> = emptyList(),
     val favourites: List<Song> = emptyList(),
     val joinedAt: LocalDateTime = LocalDateTime.now()

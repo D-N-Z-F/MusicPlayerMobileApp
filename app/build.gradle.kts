@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id ("kotlinx-serialization")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -76,4 +77,12 @@ dependencies {
 
     // Gson
     implementation(libs.gson)
+
+    // Hilt Dependency Injection
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+}
+
+kapt {
+    correctErrorTypes = true
 }

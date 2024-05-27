@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/peach_gradient_bg1"
         android:padding="20dp"
-        tools:context=".ui.LibraryFragment">
+        tools:context=".ui.fragments.LibraryFragment">
 
         <TextView
             android:id="@+id/tvLibrary"

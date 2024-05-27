@@ -1,4 +1,4 @@
-package com.example.musicplayermobileapplication.core
+package com.example.musicplayermobileapplication.core.converters
 
 import androidx.room.TypeConverter
 import com.example.musicplayermobileapplication.data.model.Genres
@@ -6,9 +6,6 @@ import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.serializer
 import java.lang.reflect.Type
 import java.time.LocalDateTime
 

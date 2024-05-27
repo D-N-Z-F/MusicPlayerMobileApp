@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/blue_gradient_bg1"
     android:paddingHorizontal="@dimen/thirty_dp"
-    tools:context=".SignUpFragment">
+    tools:context=".ui.fragments.SignUpFragment">
 
     <TextView
         android:id="@+id/tvSignUp"
