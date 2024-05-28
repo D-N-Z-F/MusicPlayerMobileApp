@@ -24,7 +24,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tvSongSinger"
+            android:id="@+id/tvSongArtist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvSongTitle"
@@ -32,6 +32,6 @@
             android:fontFamily="@font/light_poppins"
             android:text="Yoasobi"
             android:textColor="@color/dark_grey"
-            android:textSize="10sp" />
+            android:textSize="11sp" />
     </RelativeLayout>
 </layout>

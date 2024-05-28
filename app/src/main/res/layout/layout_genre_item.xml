@@ -17,7 +17,5 @@
             android:text="Work"
             android:textColor="@color/white"
             android:textSize="12sp" />
-
-
     </androidx.cardview.widget.CardView>
 </layout>
