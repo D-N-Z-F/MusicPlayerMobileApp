@@ -1,8 +1,11 @@
 package com.example.musicplayermobileapplication.core.di
 
 import android.content.Context
+import android.widget.Toast
 import androidx.room.Room
 import com.example.musicplayermobileapplication.data.db.MusicPlayerDatabase
+import com.example.musicplayermobileapplication.data.repository.UserRepo
+import com.example.musicplayermobileapplication.data.repository.UserRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,8 +21,7 @@ class AppModule {
     fun provideRoomDB(@ApplicationContext context: Context): MusicPlayerDatabase =
         Room.databaseBuilder(context, MusicPlayerDatabase::class.java, MusicPlayerDatabase.NAME)
             .fallbackToDestructiveMigration().build()
-
-//    @Provides
-//    @Singleton
-//    fun provideMusicPlayerRepo(db: MusicPlayerDatabase)
+    @Provides
+    @Singleton
+    fun provideUserRepo(db: MusicPlayerDatabase): UserRepo = UserRepoImpl(db.userDao())
 }
