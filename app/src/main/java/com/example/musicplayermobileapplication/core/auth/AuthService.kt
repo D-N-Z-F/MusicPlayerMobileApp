@@ -11,7 +11,7 @@ class AuthService @Inject constructor(
     @ApplicationContext private val context: Context,
     private val sharedPreferences: SharedPreferences
 ) {
-    fun login(username: String, password: Int) {
+    fun login(username: String) {
         sharedPreferences.edit {
             putBoolean(Constants.IS_LOGGED_IN, true)
             putString(Constants.USERNAME, username)

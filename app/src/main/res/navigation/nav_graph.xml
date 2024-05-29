@@ -17,5 +17,10 @@
     <fragment
         android:id="@+id/containerFragment"
         android:name="com.example.musicplayermobileapplication.ui.fragments.ContainerFragment"
-        android:label="ContainerFragment" />
+        android:label="ContainerFragment" >
+        <action
+            android:id="@+id/containerToLogin"
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

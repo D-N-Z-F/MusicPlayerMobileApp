@@ -25,7 +25,6 @@ class LoginSignUpViewModel @Inject constructor(
     val showToast: MutableLiveData<String> = MutableLiveData()
     private val _finish: MutableSharedFlow<Unit> = MutableSharedFlow()
     val finish: SharedFlow<Unit> = _finish
-
     fun validateRegister(gender: String, age: Int) {
         if(username.value != "" && password.value != "") {
             try {
@@ -43,11 +42,9 @@ class LoginSignUpViewModel @Inject constructor(
                             username = username.value!!,
                             password = hashedPassword,
                             gender = selectedGender,
-                            age = age,
+                            age = age
                         ))
-                        delay(200)
-                        authService.login(username.value!!, hashedPassword)
-                        _finish.emit(Unit)
+                        login(username.value!!)
                     } else { showToast.postValue("User already exists!") }
                 }
             } catch (e: Exception) { showToast.postValue(e.message) }
@@ -55,24 +52,27 @@ class LoginSignUpViewModel @Inject constructor(
             showToast.postValue("Please enter appropriate values for username and password!")
         }
     }
-
     fun validateLogin() {
         if(username.value != "" && password.value != "") {
             try {
                 viewModelScope.launch(Dispatchers.IO) {
                     val hashedPassword = password.value!!.hashCode()
                     val user = userRepo.getUser(username.value!!, hashedPassword)
-                    if(user != null) {
-                        delay(200)
-                        authService.login(username.value!!, hashedPassword)
-                        _finish.emit(Unit)
-                    } else { showToast.postValue("User doesn't exist!") }
+                    if(user != null) { login(username.value!!) }
+                    else { showToast.postValue("User doesn't exist!") }
                 }
             } catch (e: Exception) { showToast.postValue(e.message) }
         } else {
             showToast.postValue("Please enter appropriate values for username and password!")
         }
     }
-
+    private fun login(username: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(200)
+            authService.login(username)
+            showToast.postValue("Login Successful!")
+            _finish.emit(Unit)
+        }
+    }
     fun isLoggedIn(): Boolean = authService.isLoggedIn()
 }
