@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.musicplayermobileapplication.core.auth.AuthService
 import com.example.musicplayermobileapplication.data.model.Genders
 import com.example.musicplayermobileapplication.data.model.User
-import com.example.musicplayermobileapplication.data.repository.UserRepo
+import com.example.musicplayermobileapplication.data.repository.repo.UserRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

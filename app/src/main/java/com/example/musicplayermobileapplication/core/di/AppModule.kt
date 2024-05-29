@@ -2,13 +2,15 @@ package com.example.musicplayermobileapplication.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.widget.Toast
 import androidx.room.Room
-import com.example.musicplayermobileapplication.R
 import com.example.musicplayermobileapplication.core.constants.Constants
 import com.example.musicplayermobileapplication.data.db.MusicPlayerDatabase
-import com.example.musicplayermobileapplication.data.repository.UserRepo
-import com.example.musicplayermobileapplication.data.repository.UserRepoImpl
+import com.example.musicplayermobileapplication.data.repository.repo.PlaylistRepo
+import com.example.musicplayermobileapplication.data.repository.repo.SongRepo
+import com.example.musicplayermobileapplication.data.repository.repo.UserRepo
+import com.example.musicplayermobileapplication.data.repository.repoImpl.PlaylistRepoImpl
+import com.example.musicplayermobileapplication.data.repository.repoImpl.SongRepoImpl
+import com.example.musicplayermobileapplication.data.repository.repoImpl.UserRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,4 +35,12 @@ class AppModule {
     @Provides
     @Singleton
     fun provideUserRepo(db: MusicPlayerDatabase): UserRepo = UserRepoImpl(db.userDao())
+
+    @Provides
+    @Singleton
+    fun providePlaylistRepo(db: MusicPlayerDatabase): PlaylistRepo = PlaylistRepoImpl(db.playlistDao())
+
+    @Provides
+    @Singleton
+    fun provideSongRepo(db: MusicPlayerDatabase): SongRepo = SongRepoImpl(db.songDao())
 }

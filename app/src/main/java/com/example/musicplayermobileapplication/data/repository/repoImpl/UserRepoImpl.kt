@@ -1,7 +1,8 @@
-package com.example.musicplayermobileapplication.data.repository
+package com.example.musicplayermobileapplication.data.repository.repoImpl
 
 import com.example.musicplayermobileapplication.data.db.UserDao
 import com.example.musicplayermobileapplication.data.model.User
+import com.example.musicplayermobileapplication.data.repository.repo.UserRepo
 
 class UserRepoImpl(private val dao: UserDao): UserRepo {
     override fun addUser(user: User) { dao.addUser(user) }

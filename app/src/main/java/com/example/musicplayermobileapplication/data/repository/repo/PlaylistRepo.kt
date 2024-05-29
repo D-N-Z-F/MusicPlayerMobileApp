@@ -1,4 +1,4 @@
-package com.example.musicplayermobileapplication.data.repository
+package com.example.musicplayermobileapplication.data.repository.repo
 import com.example.musicplayermobileapplication.data.model.Playlist
 
 interface PlaylistRepo {
