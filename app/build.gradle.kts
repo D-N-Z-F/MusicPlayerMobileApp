@@ -79,12 +79,10 @@ dependencies {
     implementation(libs.gson)
 
     // Hilt Dependency Injection
-
-//    implementation(libs.hilt.android)
-//    kapt(libs.hilt.android.compiler)
-
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler.v244)
+
+    //Glide
     implementation(libs.glide)
 
 }
