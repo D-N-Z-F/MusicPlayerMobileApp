@@ -1,4 +1,5 @@
 package com.example.musicplayermobileapplication.data.repository
+
 import com.example.musicplayermobileapplication.data.model.User
 
 interface UserRepo {
