@@ -11,7 +11,7 @@ data class Song(
     val title: String,
     val artist: String,
     val genre: List<Genres> = emptyList(),
-    val imagePath: String = "",
+    val imagePath: String = "/storage/emulated/0/Download/MusicIcon.jpg",
     val filePath: String
 )
 enum class Genres {

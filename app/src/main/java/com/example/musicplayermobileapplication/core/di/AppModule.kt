@@ -2,10 +2,8 @@ package com.example.musicplayermobileapplication.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.widget.Toast
 import androidx.room.Room
-import com.example.musicplayermobileapplication.R
-import com.example.musicplayermobileapplication.core.constants.Constants
+import com.example.musicplayermobileapplication.core.utils.Constants
 import com.example.musicplayermobileapplication.data.db.MusicPlayerDatabase
 import com.example.musicplayermobileapplication.data.repository.UserRepo
 import com.example.musicplayermobileapplication.data.repository.UserRepoImpl
@@ -27,9 +25,7 @@ class AppModule {
     @Singleton
     fun provideRoomDB(@ApplicationContext context: Context): MusicPlayerDatabase =
         Room.databaseBuilder(context, MusicPlayerDatabase::class.java, MusicPlayerDatabase.NAME)
-            .addMigrations(
-                MusicPlayerDatabase.MIGRATION_1_2
-            ).build()
+            .fallbackToDestructiveMigration().build()
     @Provides
     @Singleton
     fun provideUserRepo(db: MusicPlayerDatabase): UserRepo = UserRepoImpl(db.userDao())

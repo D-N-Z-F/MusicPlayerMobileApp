@@ -3,7 +3,7 @@ package com.example.musicplayermobileapplication.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.musicplayermobileapplication.core.auth.AuthService
+import com.example.musicplayermobileapplication.core.services.AuthService
 import com.example.musicplayermobileapplication.data.model.Genders
 import com.example.musicplayermobileapplication.data.model.User
 import com.example.musicplayermobileapplication.data.repository.UserRepo

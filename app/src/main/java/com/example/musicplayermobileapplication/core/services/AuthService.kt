@@ -1,9 +1,9 @@
-package com.example.musicplayermobileapplication.core.auth
+package com.example.musicplayermobileapplication.core.services
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.example.musicplayermobileapplication.core.constants.Constants
+import com.example.musicplayermobileapplication.core.utils.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
