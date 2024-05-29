@@ -7,21 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.LayoutHomeSongItemBinding
 
-class SongAdapter(
+class HomeAdapter(
     private var songs: List<Song>
-) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     val listener: Listener? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val binding = LayoutHomeSongItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return SongViewHolder(binding)
+        return HomeViewHolder(binding)
     }
 
     override fun getItemCount() = songs.size
 
-    override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         return holder.bind(songs[position])
     }
 
@@ -31,7 +31,7 @@ class SongAdapter(
         notifyDataSetChanged()
     }
 
-    inner class SongViewHolder(
+    inner class HomeViewHolder(
         private val binding: LayoutHomeSongItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
