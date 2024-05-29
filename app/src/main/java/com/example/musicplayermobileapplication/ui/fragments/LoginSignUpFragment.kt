@@ -1,6 +1,5 @@
 package com.example.musicplayermobileapplication.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +9,11 @@ import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.musicplayermobileapplication.databinding.FragmentLoginSignupBinding
 import com.example.musicplayermobileapplication.ui.viewmodels.LoginSignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginSignUpFragment : Fragment() {
@@ -28,14 +27,15 @@ class LoginSignUpFragment : Fragment() {
         binding = FragmentLoginSignupBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkLoginStatus()
         lifecycleScope.launch {
             viewModel.run {
                 showToast.observe(viewLifecycleOwner) {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
+                finish.collect { checkLoginStatus() }
             }
         }
         binding.viewModel = viewModel
@@ -51,7 +51,6 @@ class LoginSignUpFragment : Fragment() {
             mbSubmit.setOnClickListener { onSubmitHandler() }
         }
     }
-
     private fun toggleDetails(registering: Boolean, clickBack: Boolean = false) {
         binding.run {
             isRegister = registering
@@ -62,9 +61,10 @@ class LoginSignUpFragment : Fragment() {
             spGender.setSelection(0)
             npAge.isInvisible = !registering
             npAge.value = 1
+            viewModel?.username?.postValue("")
+            viewModel?.password?.postValue("")
         }
     }
-
     private fun onSubmitHandler() {
         viewModel.run {
             if(isRegister) {
@@ -72,7 +72,14 @@ class LoginSignUpFragment : Fragment() {
                     binding.spGender.selectedItem.toString(),
                     binding.npAge.value
                 )
-            }
+            } else { validateLogin() }
+        }
+    }
+    private fun checkLoginStatus() {
+        if(viewModel.isLoggedIn()) {
+            findNavController().navigate(
+                LoginSignUpFragmentDirections.loginToContainer()
+            )
         }
     }
 }

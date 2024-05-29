@@ -1,8 +1,11 @@
 package com.example.musicplayermobileapplication.core.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.room.Room
+import com.example.musicplayermobileapplication.R
+import com.example.musicplayermobileapplication.core.constants.Constants
 import com.example.musicplayermobileapplication.data.db.MusicPlayerDatabase
 import com.example.musicplayermobileapplication.data.repository.UserRepo
 import com.example.musicplayermobileapplication.data.repository.UserRepoImpl
@@ -18,9 +21,15 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
+        context.getSharedPreferences(Constants.AUTH_PREFS, Context.MODE_PRIVATE)
+    @Provides
+    @Singleton
     fun provideRoomDB(@ApplicationContext context: Context): MusicPlayerDatabase =
         Room.databaseBuilder(context, MusicPlayerDatabase::class.java, MusicPlayerDatabase.NAME)
-            .fallbackToDestructiveMigration().build()
+            .addMigrations(
+                MusicPlayerDatabase.MIGRATION_1_2
+            ).build()
     @Provides
     @Singleton
     fun provideUserRepo(db: MusicPlayerDatabase): UserRepo = UserRepoImpl(db.userDao())
