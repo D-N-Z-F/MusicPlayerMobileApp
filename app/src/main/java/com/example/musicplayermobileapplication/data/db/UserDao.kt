@@ -13,7 +13,7 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addUser(user: User)
     @Query("SELECT * FROM User WHERE username = :username AND password = :password")
-    fun getUser(username: String, password: Int)
+    fun getUser(username: String, password: Int): User?
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateUser(user: User)
     @Delete

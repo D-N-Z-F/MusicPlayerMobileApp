@@ -1,5 +1,6 @@
 package com.example.musicplayermobileapplication.data.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,8 +10,8 @@ data class Song(
     val id: Int? = null,
     val title: String,
     val artist: String,
-    val genre: List<Genres>,
-    val imagePath: String,
+    val genre: List<Genres> = emptyList(),
+    val imagePath: String = "",
     val filePath: String
 )
 enum class Genres {

@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
+    id ("kotlinx-serialization")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -69,4 +71,21 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     annotationProcessor(libs.androidx.room.compiler)
     kapt("androidx.room:room-compiler:2.6.1")
+
+    // Serialisation
+    implementation(libs.kotlinx.serialization.json)
+
+    // Gson
+    implementation(libs.gson)
+
+    // Hilt Dependency Injection
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.glide)
+
+}
+
+kapt {
+    correctErrorTypes = true
 }

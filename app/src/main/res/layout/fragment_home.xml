@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/peach_gradient_bg1"
+        android:padding="20dp"
+        tools:context=".ui.fragments.HomeFragment">
+
+        <TextView
+            android:id="@+id/tvPopularSongs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/semibold_poppins"
+            android:text="Popular Songs"
+            android:textColor="@color/dark_red"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPopularSongs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPopularSongs" />
+
+        <TextView
+            android:id="@+id/tvPlaylists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvPopularSongs"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/semibold_poppins"
+            android:text="Your Playlists"
+            android:textColor="@color/dark_red"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPlaylists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPlaylists" />
+
+        <TextView
+            android:id="@+id/tvFavourites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvPlaylists"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/semibold_poppins"
+            android:text="Your Favourites"
+            android:textColor="@color/dark_red"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvFavourites" />
+
+    </RelativeLayout>
+</layout>

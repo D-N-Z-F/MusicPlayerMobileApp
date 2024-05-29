@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MusicPlayerMobileApplication</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="select_gender">Select Gender</string>
+    <string-array name="genders">
+        <item>Prefer Not To Say</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Non-Binary</item>
+    </string-array>
 </resources>

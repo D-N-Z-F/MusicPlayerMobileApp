@@ -11,11 +11,11 @@ import com.example.musicplayermobileapplication.data.model.Playlist
 @Dao
 interface PlaylistDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addPlaylist()
+    fun addPlaylist(playlist: Playlist)
     @Query("SELECT * FROM Playlist WHERE userId = :userId")
-    fun getAllUserPlaylists(userId: Int)
+    fun getAllUserPlaylists(userId: Int): List<Playlist>
     @Query("SELECT * FROM Playlist WHERE id = :id")
-    fun getPlaylistById(id: Int)
+    fun getPlaylistById(id: Int): Playlist?
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updatePlaylist(playlist: Playlist)
     @Delete

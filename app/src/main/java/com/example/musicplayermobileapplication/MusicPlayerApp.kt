@@ -1,9 +1,7 @@
 package com.example.musicplayermobileapplication
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class MusicPlayerApp: Application() {
-    override fun onCreate() {
-        super.onCreate()
-    }
-}
+@HiltAndroidApp
+class MusicPlayerApp: Application()
