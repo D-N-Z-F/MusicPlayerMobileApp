@@ -14,5 +14,4 @@ class PlaylistRepoImpl(private val dao: PlaylistDao) : PlaylistRepo {
     override fun updatePlaylist(playlist: Playlist) = dao.updatePlaylist(playlist)
 
     override fun deletePlaylist(playlist: Playlist) = dao.deletePlaylist(playlist)
-
 }
