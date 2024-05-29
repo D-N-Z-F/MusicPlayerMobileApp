@@ -77,9 +77,7 @@ class LoginSignUpFragment : Fragment() {
     }
     private fun checkLoginStatus() {
         if(viewModel.isLoggedIn()) {
-            findNavController().navigate(
-                LoginSignUpFragmentDirections.loginToContainer()
-            )
+            findNavController().navigate(LoginSignUpFragmentDirections.loginToContainer())
         }
     }
 }
