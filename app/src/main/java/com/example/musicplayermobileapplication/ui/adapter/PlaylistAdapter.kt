@@ -12,7 +12,7 @@ class PlaylistAdapter(
     private var songs: List<Song>
 ) : RecyclerView.Adapter<PlaylistAdapter.PlaylistViewHolder>() {
 
-    val listener: Listener? = null
+    var listener: Listener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
         val binding = LayoutFavouritesItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false

@@ -17,5 +17,17 @@
     <fragment
         android:id="@+id/containerFragment"
         android:name="com.example.musicplayermobileapplication.ui.fragments.ContainerFragment"
-        android:label="ContainerFragment" />
+        android:label="ContainerFragment">
+        <action
+            android:id="@+id/container_to_individualSong"
+            app:destination="@id/individualSongFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/individualSongFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.IndividualSongFragment"
+        android:label="IndividualSongFragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>
