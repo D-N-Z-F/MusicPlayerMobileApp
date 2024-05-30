@@ -35,7 +35,7 @@ class IndividualPlaylistFragment : Fragment() {
         playlistAdapter.listener = object : PlaylistAdapter.Listener {
             override fun onClick(songs: Song) {
                 findNavController().navigate(
-                    ContainerFragmentDirections.containerToIndividualSong(songs.id!!)
+                    ContainerFragmentDirections.containerToSong(songs.id!!)
                 )
             }
         }
