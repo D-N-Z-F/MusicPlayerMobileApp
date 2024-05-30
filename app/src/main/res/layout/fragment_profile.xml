@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/peach_gradient_bg1"
@@ -26,7 +28,8 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
-                android:src="@drawable/minji" />
+                android:src="@drawable/minji"
+                android:contentDescription="userProfilePicture" />
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
@@ -104,7 +107,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/mbSignUp"
+            android:id="@+id/mbLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
