@@ -5,17 +5,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.musicplayermobileapplication.R
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.musicplayermobileapplication.data.model.Song
+import com.example.musicplayermobileapplication.databinding.FragmentFavouritesBinding
+import com.example.musicplayermobileapplication.ui.adapter.PlaylistAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavouritesFragment : Fragment() {
+    private lateinit var binding: FragmentFavouritesBinding
+    private lateinit var favouritesAdapter: PlaylistAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourites, container, false)
+    ): View {
+        val binding = FragmentFavouritesBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupAdapter()
+    }
+
+    private fun setupAdapter() {
+        favouritesAdapter = PlaylistAdapter(emptyList())
+
+        favouritesAdapter.listener = object : PlaylistAdapter.Listener {
+            override fun onClick(songs: Song) {
+                findNavController().navigate(
+                    ContainerFragmentDirections.containerToSong(songs.id!!)
+                )
+            }
+        }
+        binding.rvFavourites.adapter = favouritesAdapter
+        binding.rvFavourites.layoutManager = LinearLayoutManager(requireContext())
     }
 
 }
