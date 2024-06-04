@@ -15,6 +15,17 @@ data class Song(
     val filePath: String
 )
 enum class Genres {
-    RHYTHM_AND_BLUES, CLASSICAL, JAZZ, POP, HIP_HOP, ROCK, COUNTRY, EDM, KOREAN, JAPANESE,
-    CHINESE, ENGLISH, POPULAR
+    RHYTHM_AND_BLUES,
+    CLASSICAL,
+    JAZZ,
+    POP,
+    HIP_HOP,
+    ROCK,
+    COUNTRY,
+    EDM,
+    KOREAN,
+    JAPANESE,
+    CHINESE,
+    ENGLISH,
+    POPULAR
 }

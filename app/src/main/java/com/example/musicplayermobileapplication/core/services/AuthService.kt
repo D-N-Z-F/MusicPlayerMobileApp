@@ -8,13 +8,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class AuthService @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val sharedPreferences: SharedPreferences
 ) {
-    fun login(username: String) {
+    fun login(id: Int, username: String) {
         sharedPreferences.edit {
             putBoolean(Constants.IS_LOGGED_IN, true)
             putString(Constants.USERNAME, username)
+            putInt(Constants.USER_ID, id)
             apply()
         }
     }
@@ -22,8 +22,11 @@ class AuthService @Inject constructor(
         sharedPreferences.edit {
             remove(Constants.IS_LOGGED_IN)
             remove(Constants.USERNAME)
+            remove(Constants.USER_ID)
             apply()
         }
     }
     fun isLoggedIn(): Boolean = sharedPreferences.getBoolean(Constants.IS_LOGGED_IN, false)
+
+    fun getUserId(): Int = sharedPreferences.getInt(Constants.USER_ID, 0)
 }

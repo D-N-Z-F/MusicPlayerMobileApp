@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             root.listFiles()?.let {
                 for(each in it) {
                     if(each.isDirectory) { scanForAudioAndImageFiles(each) }
-                    else if(each.isImage() || each.isAudio()) { Log.d("debugging", each.path) }
+                    else if(each.isImage() || each.isAudio()) { Log.d("file_path_debugging", each.path) }
                 }
             }
         }

@@ -1,63 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/peach_gradient_bg1"
         android:padding="20dp"
         tools:context=".ui.fragments.HomeFragment">
 
-        <TextView
-            android:id="@+id/tvPopularSongs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/semibold_poppins"
-            android:text="Popular Songs"
-            android:textColor="@color/dark_red"
-            android:textSize="20sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPopularSongs"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvPopularSongs" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tvPlaylists"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rvPopularSongs"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/semibold_poppins"
-            android:text="Your Playlists"
-            android:textColor="@color/dark_red"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tvPopularSongs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/semibold_poppins"
+                android:text="Popular Songs"
+                android:textColor="@color/dark_red"
+                android:textSize="20sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPlaylists"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvPlaylists" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularSongs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="invisible" />
 
-        <TextView
-            android:id="@+id/tvFavourites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rvPlaylists"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/semibold_poppins"
-            android:text="Your Favourites"
-            android:textColor="@color/dark_red"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tvEmptySongs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="@string/nothing_to_show"
+                android:fontFamily="@font/semibold_poppins"
+                android:visibility="visible" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFavourites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvFavourites" />
+            <TextView
+                android:id="@+id/tvPlaylists"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/semibold_poppins"
+                android:text="Your Playlists"
+                android:textColor="@color/dark_red"
+                android:textSize="20sp" />
 
-    </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPlaylists"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/tvEmptyPlaylists"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="@string/nothing_to_show"
+                android:fontFamily="@font/semibold_poppins"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvFavourites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/semibold_poppins"
+                android:text="Your Favourites"
+                android:textColor="@color/dark_red"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFavourites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/tvEmptyFavourites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="@string/nothing_to_show"
+                android:fontFamily="@font/semibold_poppins"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>
