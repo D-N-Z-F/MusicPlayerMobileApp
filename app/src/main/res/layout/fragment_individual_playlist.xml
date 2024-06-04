@@ -30,7 +30,6 @@
             android:id="@+id/rvFavourites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rlFavourites"
             android:paddingHorizontal="20dp" />
 
     </LinearLayout>
