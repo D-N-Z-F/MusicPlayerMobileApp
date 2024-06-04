@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
+    <data>
+
+        <variable
+            name="song"
+            type="com.example.musicplayermobileapplication.data.model.Song" />
+    </data>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -22,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ivSongPic"
             android:fontFamily="@font/extrabold_poppins"
-            android:text="Idol"
+            android:text="@{song.title}"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -32,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvSongTitle"
             android:fontFamily="@font/medium_poppins"
-            android:text="Yoasobi"
+            android:text="@{song.artist}"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
