@@ -26,7 +26,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
+         binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -34,10 +34,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
-            viewModel.getAllSongs().let {
-                songList = it
-                adapter.setSongs(it)
-            }
+
         }
 
         binding.run {

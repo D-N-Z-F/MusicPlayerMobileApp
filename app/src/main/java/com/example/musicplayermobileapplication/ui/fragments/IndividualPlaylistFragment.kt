@@ -20,7 +20,7 @@ class IndividualPlaylistFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentIndividualPlaylistBinding.inflate(layoutInflater, container, false)
+         binding = FragmentIndividualPlaylistBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
