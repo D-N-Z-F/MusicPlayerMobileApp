@@ -12,12 +12,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SelectedSongViewModel @Inject constructor(
+class SongsViewModel @Inject constructor(
     val repo: SongRepo
 ) : ViewModel() {
 
     private val _song: MutableLiveData<Song> = MutableLiveData()
     val song: LiveData<Song> = _song
+
+    fun getAllSongs(): List<Song> = repo.getAllSongs()
 
     fun getSongById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
