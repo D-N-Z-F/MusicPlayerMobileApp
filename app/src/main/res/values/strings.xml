@@ -2,6 +2,11 @@
     <string name="app_name">MusicPlayerMobileApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="select_gender">Select Gender</string>
+    <string name="title">Title</string>
+    <string name="artist">Artist</string>
+    <string name="image">Image</string>
+    <string name="nothing_to_show">Nothing To Show...</string>
+    <string name="description">Description</string>
     <string-array name="genders">
         <item>Prefer Not To Say</item>
         <item>Male</item>

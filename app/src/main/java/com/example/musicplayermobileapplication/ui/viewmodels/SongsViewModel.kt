@@ -3,13 +3,9 @@ package com.example.musicplayermobileapplication.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.musicplayermobileapplication.data.model.Song
-import com.example.musicplayermobileapplication.data.repository.repo.SongRepo
+import com.example.musicplayermobileapplication.data.repository.SongRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel

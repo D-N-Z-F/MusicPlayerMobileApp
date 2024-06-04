@@ -1,23 +1,34 @@
 package com.example.musicplayermobileapplication.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.musicplayermobileapplication.R
+import com.example.musicplayermobileapplication.data.model.Favourite
+import com.example.musicplayermobileapplication.data.model.Playlist
+import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentHomeBinding
-import com.example.musicplayermobileapplication.ui.adapter.HomeAdapter
+import com.example.musicplayermobileapplication.ui.adapter.FavouriteAdapter
+import com.example.musicplayermobileapplication.ui.adapter.PlaylistAdapter
+import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
+import com.example.musicplayermobileapplication.ui.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.math.abs
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var songAdapter: SongAdapter
+    private lateinit var playlistAdapter: PlaylistAdapter
+    private lateinit var favouriteAdapter: FavouriteAdapter
+    private val viewModel: HomeViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,33 +39,62 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupAdapter()
-    }
-
-    private fun setupAdapter() {
-        homeAdapter = HomeAdapter(emptyList())
-
-        binding.vpPopularSongs.let { pager ->
-            pager.adapter = homeAdapter
-            pager.offscreenPageLimit - 3
-            val pageTransformer = CompositePageTransformer()
-            pageTransformer.addTransformer { page, position ->
-                val r = 1 - abs(position)
-                page.scaleY = 0.35f + 0.35f * r
-                page.scaleX = 0.65f + 0.25f * r
-            }
-
-            pager.setPageTransformer(pageTransformer)
-
+        setupAdapters()
+        viewModel.run {
+//            addEssentials()
             lifecycleScope.launch {
-                var position = 0
-                while (true) {
-                    pager.setCurrentItem(position, true)
-                    position++
-                    if (position > 5) position = 0
-                    delay(2000)
+                getAllSongs().collect {
+                    binding.rvPopularSongs.isInvisible = it.isEmpty()
+                    binding.tvEmptySongs.isInvisible = it.isNotEmpty()
+                    songAdapter.setupSongs(it)
                 }
             }
+            lifecycleScope.launch {
+                getAllUserPlaylists().collect {
+                    binding.rvPlaylists.isInvisible = it.isEmpty()
+                    binding.tvEmptyPlaylists.isInvisible = it.isNotEmpty()
+                    playlistAdapter.setupPlaylists(it)
+                }
+            }
+            lifecycleScope.launch {
+                getAllUserFavourites().collect {
+                    it?.let {
+                        val songs = it.favourites
+                        binding.rvFavourites.isInvisible = songs.isEmpty()
+                        binding.tvEmptyFavourites.isInvisible = songs.isNotEmpty()
+                        favouriteAdapter.setupSongs(songs)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupAdapters() {
+        songAdapter = SongAdapter(emptyList())
+        songAdapter.listener = object: SongAdapter.Listener {
+            override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
+        }
+        playlistAdapter = PlaylistAdapter(emptyList())
+        playlistAdapter.listener = object: PlaylistAdapter.Listener {
+            override fun onClick(playlist: Playlist) { Log.d("debugging", playlist.id!!.toString()) }
+        }
+        favouriteAdapter = FavouriteAdapter(emptyList())
+        favouriteAdapter.listener = object: FavouriteAdapter.Listener {
+            override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
+        }
+        binding.run {
+            rvPopularSongs.adapter = songAdapter
+            rvPopularSongs.layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL, false
+            )
+            rvPlaylists.adapter = playlistAdapter
+            rvPlaylists.layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL, false
+            )
+            rvFavourites.adapter = favouriteAdapter
+            rvFavourites.layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL, false
+            )
         }
     }
 }

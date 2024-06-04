@@ -11,10 +11,21 @@ data class Song(
     val title: String,
     val artist: String,
     val genre: List<Genres> = emptyList(),
-    val imagePath: String = "",
+    val imagePath: String = "/storage/emulated/0/Download/MusicIcon.jpg",
     val filePath: String
 )
 enum class Genres {
-    RHYTHM_AND_BLUES, CLASSICAL, JAZZ, POP, HIP_HOP, ROCK, COUNTRY, EDM, KOREAN, JAPANESE,
-    CHINESE, ENGLISH, POPULAR
+    RHYTHM_AND_BLUES,
+    CLASSICAL,
+    JAZZ,
+    POP,
+    HIP_HOP,
+    ROCK,
+    COUNTRY,
+    EDM,
+    KOREAN,
+    JAPANESE,
+    CHINESE,
+    ENGLISH,
+    POPULAR
 }

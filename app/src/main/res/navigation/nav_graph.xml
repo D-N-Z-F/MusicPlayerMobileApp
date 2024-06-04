@@ -11,6 +11,7 @@
         <action
             android:id="@+id/loginToContainer"
             app:destination="@id/containerFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -20,6 +21,7 @@
         <action
             android:id="@+id/containerToLogin"
             app:destination="@id/loginFragment"
+            app:popUpTo="@id/containerFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/containerToSong"
