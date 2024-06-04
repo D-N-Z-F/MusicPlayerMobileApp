@@ -6,10 +6,13 @@ import androidx.room.Room
 import com.example.musicplayermobileapplication.core.utils.Constants
 import com.example.musicplayermobileapplication.data.db.MusicPlayerDatabase
 import com.example.musicplayermobileapplication.data.repository.FavouriteRepo
-import com.example.musicplayermobileapplication.data.repository.UserRepoImpl
+import com.example.musicplayermobileapplication.data.repository.FavouriteRepoImpl
 import com.example.musicplayermobileapplication.data.repository.PlaylistRepo
+import com.example.musicplayermobileapplication.data.repository.PlaylistRepoImpl
 import com.example.musicplayermobileapplication.data.repository.SongRepo
+import com.example.musicplayermobileapplication.data.repository.SongRepoImpl
 import com.example.musicplayermobileapplication.data.repository.UserRepo
+import com.example.musicplayermobileapplication.data.repository.UserRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,17 +27,21 @@ class AppModule {
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences(Constants.AUTH_PREFS, Context.MODE_PRIVATE)
+
     @Provides
     @Singleton
     fun provideRoomDB(@ApplicationContext context: Context): MusicPlayerDatabase =
         Room.databaseBuilder(context, MusicPlayerDatabase::class.java, MusicPlayerDatabase.NAME)
             .fallbackToDestructiveMigration().build()
+
     @Provides
     @Singleton
     fun provideUserRepo(db: MusicPlayerDatabase): UserRepo = UserRepoImpl(db.userDao())
+
     @Provides
     @Singleton
     fun provideSongRepo(db: MusicPlayerDatabase): SongRepo = SongRepoImpl(db.songDao())
+
     @Provides
     @Singleton
     fun providePlaylistRepo(db: MusicPlayerDatabase): PlaylistRepo = PlaylistRepoImpl(db.playlistDao())
