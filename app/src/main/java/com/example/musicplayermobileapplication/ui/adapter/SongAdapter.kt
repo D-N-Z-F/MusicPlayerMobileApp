@@ -1,9 +1,7 @@
 package com.example.musicplayermobileapplication.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -25,6 +23,7 @@ class SongAdapter(
     override fun onBindViewHolder(
         holder: SongViewHolder, position: Int
     ) = holder.bind(songs[position])
+    fun getSongs() = this.songs
     fun setupSongs(songs: List<Song>) {
         val diffUtil = SongDiffUtil(this.songs, songs)
         DiffUtil.calculateDiff(diffUtil).dispatchUpdatesTo(this)

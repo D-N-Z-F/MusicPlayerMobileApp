@@ -12,7 +12,7 @@
         tools:context=".ProfileFragment">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvSongPic"
+            android:id="@+id/cvImage"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_centerHorizontal="true"
@@ -23,45 +23,57 @@
             app:cardCornerRadius="8dp">
 
             <ImageView
-                android:id="@+id/roundedImageView"
+                android:id="@+id/ivImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
                 android:src="@drawable/minji"
-                android:contentDescription="userProfilePicture" />
+                android:contentDescription="@string/image" />
+
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/tvUserName"
+            android:id="@+id/tvUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cvSongPic"
+            android:layout_below="@id/cvImage"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/extrabold_poppins"
-            android:text="Kim Minji"
+            android:text="@string/username"
             android:textColor="@color/black"
             android:textSize="@dimen/twenty_two_sp" />
 
+        <ImageView
+            android:id="@+id/ivEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_toEndOf="@id/tvUsername"
+            android:layout_alignTop="@id/tvUsername"
+            android:src="@drawable/ic_edit"
+            android:clickable="true"
+            android:contentDescription="@string/edit" />
+
         <include
-            android:id="@+id/subscriptionStatus"
+            android:id="@+id/status"
             layout="@layout/layout_subscription_item"
             android:layout_width="70dp"
             android:layout_height="20dp"
-            android:layout_below="@id/tvUserName"
+            android:layout_below="@id/tvUsername"
             android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/tvBio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/subscriptionStatus"
+            android:layout_below="@id/status"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/thirty_dp"
             android:layout_marginBottom="@dimen/forty_dp"
             android:gravity="center"
             android:fontFamily="@font/regular_kalam"
-            android:text="My favorite things are chocolate-coated ice cream and driving with my dad."
+            android:text="@string/bio"
             android:textColor="@color/black"
             android:textSize="@dimen/sixteen_sp" />
 
@@ -80,11 +92,11 @@
                 android:padding="@dimen/ten_dp">
 
                 <TextView
-                    android:id="@+id/tvDOB"
+                    android:id="@+id/tvAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/medium_poppins"
-                    android:text="DOB: 7 May 2004"
+                    android:text="@string/age"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -92,18 +104,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/medium_poppins"
-                    android:text="Gender: Female"
+                    android:text="@string/gender"
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/tvJoinedDate"
+                    android:id="@+id/tvJoinedAt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/medium_poppins"
-                    android:text="Joined At: 24 Aug 2021"
+                    android:text="@string/joined_at"
                     android:textColor="@color/black" />
 
             </LinearLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
@@ -116,10 +129,12 @@
             android:backgroundTint="@color/green"
             android:elevation="4dp"
             android:fontFamily="@font/bold_chakrapetch"
-            android:text="Log Out"
+            android:text="@string/log_out"
             android:textColor="@color/black"
             android:textSize="@dimen/sixteen_sp"
             android:translationZ="6dp"
             app:cornerRadius="20dp" />
+
     </RelativeLayout>
+
 </layout>

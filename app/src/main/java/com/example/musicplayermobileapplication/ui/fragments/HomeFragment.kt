@@ -10,15 +10,13 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.musicplayermobileapplication.R
-import com.example.musicplayermobileapplication.data.model.Favourite
 import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentHomeBinding
 import com.example.musicplayermobileapplication.ui.adapter.FavouriteAdapter
 import com.example.musicplayermobileapplication.ui.adapter.PlaylistAdapter
 import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
-import com.example.musicplayermobileapplication.ui.viewmodels.HomeViewModel
+import com.example.musicplayermobileapplication.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -28,7 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var songAdapter: SongAdapter
     private lateinit var playlistAdapter: PlaylistAdapter
     private lateinit var favouriteAdapter: FavouriteAdapter
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: SharedViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,23 +34,22 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapters()
         viewModel.run {
-//            addEssentials()
+//            addEssentials() // Temporary
             lifecycleScope.launch {
                 getAllSongs().collect {
-                    binding.rvPopularSongs.isInvisible = it.isEmpty()
-                    binding.tvEmptySongs.isInvisible = it.isNotEmpty()
+                    binding.rvPopularSongs.visibility = setRecyclerView(it)
+                    binding.tvEmptySongs.visibility = setTextView(it)
                     songAdapter.setupSongs(it)
                 }
             }
             lifecycleScope.launch {
                 getAllUserPlaylists().collect {
-                    binding.rvPlaylists.isInvisible = it.isEmpty()
-                    binding.tvEmptyPlaylists.isInvisible = it.isNotEmpty()
+                    binding.rvPlaylists.visibility = setRecyclerView(it)
+                    binding.tvEmptyPlaylists.visibility = setTextView(it)
                     playlistAdapter.setupPlaylists(it)
                 }
             }
@@ -60,15 +57,16 @@ class HomeFragment : Fragment() {
                 getAllUserFavourites().collect {
                     it?.let {
                         val songs = it.favourites
-                        binding.rvFavourites.isInvisible = songs.isEmpty()
-                        binding.tvEmptyFavourites.isInvisible = songs.isNotEmpty()
+                        binding.rvFavourites.visibility = setRecyclerView(songs)
+                        binding.tvEmptyFavourites.visibility = setTextView(songs)
                         favouriteAdapter.setupSongs(songs)
                     }
                 }
             }
         }
     }
-
+    private fun setRecyclerView(data: List<*>) = if(data.isEmpty()) View.GONE else View.VISIBLE
+    private fun setTextView(data: List<*>) = if(data.isNotEmpty()) View.GONE else View.VISIBLE
     private fun setupAdapters() {
         songAdapter = SongAdapter(emptyList())
         songAdapter.listener = object: SongAdapter.Listener {
@@ -80,7 +78,7 @@ class HomeFragment : Fragment() {
         }
         favouriteAdapter = FavouriteAdapter(emptyList())
         favouriteAdapter.listener = object: FavouriteAdapter.Listener {
-            override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
+            override fun onClick(song: Song) { Log.d("debugging", song.toString()) }
         }
         binding.run {
             rvPopularSongs.adapter = songAdapter

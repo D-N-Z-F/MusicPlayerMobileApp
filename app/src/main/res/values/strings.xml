@@ -5,8 +5,18 @@
     <string name="title">Title</string>
     <string name="artist">Artist</string>
     <string name="image">Image</string>
-    <string name="nothing_to_show">Nothing To Show...</string>
+    <string name="nothing_to_show">Nothing To Show…</string>
     <string name="description">Description</string>
+    <string name="search">Search</string>
+    <string name="username">Username</string>
+    <string name="bio">Biography</string>
+    <string name="bio_placeholder">Hello! I\'m new!</string>
+    <string name="age">Age: %d</string>
+    <string name="gender">Gender: %s</string>
+    <string name="joined_at">Joined At: %s</string>
+    <string name="log_out">Log Out</string>
+    <string name="status">Status</string>
+    <string name="edit">Edit</string>
     <string-array name="genders">
         <item>Prefer Not To Say</item>
         <item>Male</item>

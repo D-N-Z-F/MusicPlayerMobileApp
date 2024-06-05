@@ -1,35 +1,57 @@
 package com.example.musicplayermobileapplication.ui.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.musicplayermobileapplication.core.services.AuthService
 import com.example.musicplayermobileapplication.data.model.Favourite
-import com.example.musicplayermobileapplication.data.model.Genres
 import com.example.musicplayermobileapplication.data.model.Playlist
+import com.example.musicplayermobileapplication.data.model.PublicUserDetails
 import com.example.musicplayermobileapplication.data.model.Song
+import com.example.musicplayermobileapplication.data.model.User
 import com.example.musicplayermobileapplication.data.repository.FavouriteRepo
 import com.example.musicplayermobileapplication.data.repository.PlaylistRepo
 import com.example.musicplayermobileapplication.data.repository.SongRepo
 import com.example.musicplayermobileapplication.data.repository.UserRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SharedViewModel @Inject constructor(
     private val userRepo: UserRepo,
     private val songRepo: SongRepo,
     private val playlistRepo: PlaylistRepo,
     private val favouriteRepo: FavouriteRepo,
     private val authService: AuthService
 ): ViewModel() {
+    val showToast: MutableLiveData<String> = MutableLiveData()
+    private val _finish: MutableSharedFlow<Unit> = MutableSharedFlow()
+    val finish: SharedFlow<Unit> = _finish
     private fun getUserId(): Int = authService.getUserId()
+    fun getUserById(): Flow<PublicUserDetails?> = userRepo.getUserById(getUserId())
     fun getAllSongs(): Flow<List<Song>> = songRepo.getAllSongs()
     fun getAllUserPlaylists(): Flow<List<Playlist>> = playlistRepo.getAllUserPlaylists(getUserId())
     fun getAllUserFavourites(): Flow<Favourite?> = favouriteRepo.getAllUserFavourites(getUserId())
+    fun searchWord(query: String?, songList: List<Song>): List<Song> {
+        return if (query.isNullOrBlank()) { songList }
+        else { songList.filter { it.title.contains(query, ignoreCase = true) } }
+    }
+    fun logout() {
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(200)
+            authService.logout()
+            showToast.postValue("Logout Successful!")
+            _finish.emit(Unit)
+        }
+    }
+    fun isLoggedIn(): Boolean = authService.isLoggedIn()
 
     // Below All Temporary
 //    private val songs = listOf(
@@ -138,7 +160,10 @@ class HomeViewModel @Inject constructor(
 //                songRepo.addSong(song)
 //                Log.d("debugging", "${song.title} added!")
 //            }
-//            playlistRepo.addPlaylist(playlist)
+//            for(playlist in playlists) {
+//                playlistRepo.addPlaylist(playlist)
+//                Log.d("debugging", "${playlist.title} added!")
+//            }
 //            favouriteRepo.addFavourites(favourites)
 //        }
 //    }

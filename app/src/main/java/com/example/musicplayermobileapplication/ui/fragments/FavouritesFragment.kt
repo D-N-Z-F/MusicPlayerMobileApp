@@ -9,13 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentFavouritesBinding
-import com.example.musicplayermobileapplication.ui.adapter.SongsAdapter
+import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavouritesFragment : Fragment() {
     private lateinit var binding: FragmentFavouritesBinding
-    private lateinit var favouritesAdapter: SongsAdapter
+    private lateinit var favouritesAdapter: SongAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,12 +30,12 @@ class FavouritesFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        favouritesAdapter = SongsAdapter(emptyList())
+        favouritesAdapter = SongAdapter(emptyList())
 
-        favouritesAdapter.listener = object : SongsAdapter.Listener {
-            override fun onClick(songs: Song) {
+        favouritesAdapter.listener = object : SongAdapter.Listener {
+            override fun onClick(song: Song) {
                 findNavController().navigate(
-                    ContainerFragmentDirections.containerToSong(songs.id!!)
+                    ContainerFragmentDirections.containerToSong(song.id!!)
                 )
             }
         }
