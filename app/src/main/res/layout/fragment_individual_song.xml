@@ -2,35 +2,33 @@
 <layout>
 
     <data>
-
         <variable
-            name="song"
-            type="com.example.musicplayermobileapplication.data.model.Song" />
+            name="viewModel"
+            type="com.example.musicplayermobileapplication.ui.viewmodels.SongsViewModel" />
     </data>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/song_bg2"
         android:paddingHorizontal="90dp"
+        android:orientation="vertical"
         tools:context=".ui.fragments.IndividualSongFragment">
 
         <ImageView
             android:id="@+id/ivSongPic"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:src="@drawable/yoasobi" />
+            android:src="@{viewModel.song.imagePath}" />
 
         <TextView
             android:id="@+id/tvSongTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ivSongPic"
             android:fontFamily="@font/extrabold_poppins"
-            android:text="@{song.title}"
+            android:text="@{viewModel.song.title}"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -38,10 +36,9 @@
             android:id="@+id/tvSongSinger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvSongTitle"
             android:fontFamily="@font/medium_poppins"
-            android:text="@{song.artist}"
+            android:text="@{viewModel.song.artist}"
             android:textColor="@color/white"
             android:textSize="20sp" />
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
