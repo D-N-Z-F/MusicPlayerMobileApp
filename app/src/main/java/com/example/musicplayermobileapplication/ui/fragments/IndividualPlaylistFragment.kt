@@ -16,11 +16,16 @@ import dagger.hilt.android.AndroidEntryPoint
 class IndividualPlaylistFragment : Fragment() {
     private lateinit var binding: FragmentIndividualPlaylistBinding
     private lateinit var playlistAdapter: SongAdapter
+
+    private var selectedPlaylistId = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-         binding = FragmentIndividualPlaylistBinding.inflate(layoutInflater, container, false)
+        binding = FragmentIndividualPlaylistBinding.inflate(layoutInflater, container, false)
+
+        selectedPlaylistId = requireArguments().getInt("id")
         return binding.root
     }
 
@@ -33,9 +38,9 @@ class IndividualPlaylistFragment : Fragment() {
         playlistAdapter = SongAdapter(emptyList())
 
         playlistAdapter.listener = object : SongAdapter.Listener {
-            override fun onClick(songs: Song) {
+            override fun onClick(song: Song) {
                 findNavController().navigate(
-                    ContainerFragmentDirections.containerToSong(songs.id!!)
+                    ContainerFragmentDirections.containerToSong(song.id!!)
                 )
             }
         }

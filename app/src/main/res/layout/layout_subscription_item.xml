@@ -8,19 +8,18 @@
     app:cardCornerRadius="@dimen/four_dp"
     app:strokeColor="@android:color/transparent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gold_bg">
+        android:background="@drawable/gold_bg"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/medium_poppins"
             android:text="Premium"
             android:textColor="@color/black"
             android:textSize="@dimen/twelve_sp" />
-    </RelativeLayout>
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
