@@ -15,19 +15,25 @@ import javax.inject.Inject
 class SongsViewModel @Inject constructor(
     val repo: SongRepo
 ) : ViewModel() {
-//
-//    private val _song: MutableLiveData<List<Song>> = MutableLiveData()
-//    val song: LiveData<List<Song>> = _song
-//
+
+    private val _song: MutableLiveData<Song> = MutableLiveData()
+    val song: LiveData<Song> = _song
+
+    fun getSongById(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _song.postValue(repo.getSongById(id))
+        }
+    }
+
+//    var picture: MutableLiveData<String> = MutableLiveData()
+//    var title: MutableLiveData<String> = MutableLiveData()
+//    var artist: MutableLiveData<String> = MutableLiveData()
+
 //    fun getAllSongs() {
 //        viewModelScope.launch(Dispatchers.IO) {
 //            _song.postValue(repo.getAllSongs())
 //        }
 //    }
 //
-//    fun getSongById(id: Int) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _song.postValue(repo.getSongById(id))
-//        }
-//    }
+
 }

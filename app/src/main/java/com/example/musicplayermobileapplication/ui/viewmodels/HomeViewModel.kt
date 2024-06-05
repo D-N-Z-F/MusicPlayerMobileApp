@@ -138,7 +138,10 @@ class HomeViewModel @Inject constructor(
 //                songRepo.addSong(song)
 //                Log.d("debugging", "${song.title} added!")
 //            }
-//            playlistRepo.addPlaylist(playlist)
+//            for(playlist in playlists) {
+//                playlistRepo.addPlaylist(playlist)
+//                Log.d("debugging", "${playlist.title} added!")
+//            }
 //            favouriteRepo.addFavourites(favourites)
 //        }
 //    }

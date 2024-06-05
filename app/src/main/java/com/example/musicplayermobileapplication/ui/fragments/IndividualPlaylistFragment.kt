@@ -9,13 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentIndividualPlaylistBinding
-import com.example.musicplayermobileapplication.ui.adapter.SongsAdapter
+import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class IndividualPlaylistFragment : Fragment() {
     private lateinit var binding: FragmentIndividualPlaylistBinding
-    private lateinit var playlistAdapter: SongsAdapter
+    private lateinit var playlistAdapter: SongAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,9 +30,9 @@ class IndividualPlaylistFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        playlistAdapter = SongsAdapter(emptyList())
+        playlistAdapter = SongAdapter(emptyList())
 
-        playlistAdapter.listener = object : SongsAdapter.Listener {
+        playlistAdapter.listener = object : SongAdapter.Listener {
             override fun onClick(songs: Song) {
                 findNavController().navigate(
                     ContainerFragmentDirections.containerToSong(songs.id!!)
