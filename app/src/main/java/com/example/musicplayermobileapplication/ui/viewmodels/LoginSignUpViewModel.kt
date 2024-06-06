@@ -38,14 +38,14 @@ class LoginSignUpViewModel @Inject constructor(
                     }
                     val user = userRepo.validateUser(username.value!!, hashedPassword)
                     if(user == null) {
-                        userRepo.addUser(User(
+                        addUser(User(
                             username = username.value!!,
                             password = hashedPassword,
                             gender = selectedGender,
                             age = age
                         ))
-                        val newUser = userRepo.validateUser(username.value!!, hashedPassword)
-                        if(newUser != null) { login(newUser.id!!, username.value!!) }
+                        delay(200)
+                        validateLogin()
                     } else { showToast.postValue("User already exists!") }
                 }
             } catch (e: Exception) { showToast.postValue(e.message) }
@@ -66,6 +66,9 @@ class LoginSignUpViewModel @Inject constructor(
         } else {
             showToast.postValue("Please enter appropriate values for username and password!")
         }
+    }
+    private fun addUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) { userRepo.addUser(user) }
     }
     private fun login(id: Int, username: String) {
         viewModelScope.launch(Dispatchers.IO) {

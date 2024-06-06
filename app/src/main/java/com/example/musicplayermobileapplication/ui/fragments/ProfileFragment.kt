@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.musicplayermobileapplication.R
@@ -48,7 +50,12 @@ class ProfileFragment : Fragment() {
                     it?.let { setupUserDetails(it) }
                 }
             }
-            binding.mbLogout.setOnClickListener { logout() }
+            binding.run {
+                ivEdit.setOnClickListener {
+                    findNavController().navigate(ContainerFragmentDirections.containerToEditUser())
+                }
+                mbLogout.setOnClickListener { logout() }
+            }
         }
     }
     private fun setupUserDetails(data: PublicUserDetails) {
@@ -75,7 +82,10 @@ class ProfileFragment : Fragment() {
         }
     }
     private fun checkLoginStatus() {
-        if(!viewModel.isLoggedIn()) {
+        if(
+            !viewModel.isLoggedIn()
+            && findNavController().currentDestination?.id == R.id.containerFragment
+            ) {
             findNavController().navigate(ContainerFragmentDirections.containerToLogin())
         }
     }

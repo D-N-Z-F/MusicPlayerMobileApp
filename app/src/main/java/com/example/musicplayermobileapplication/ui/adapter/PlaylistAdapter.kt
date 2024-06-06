@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.musicplayermobileapplication.core.utils.PlaylistDiffUtil
 import com.example.musicplayermobileapplication.data.model.Playlist
-import com.example.musicplayermobileapplication.databinding.LayoutSongHorizontalItemBinding
+import com.example.musicplayermobileapplication.databinding.LayoutPlaylistItemBinding
 import java.io.File
 
-class LibraryAdapter(
+class PlaylistAdapter(
     private var playlists: List<Playlist>
-) : RecyclerView.Adapter<LibraryAdapter.PlaylistViewHolder>() {
+) : RecyclerView.Adapter<PlaylistAdapter.PlaylistViewHolder>() {
     var listener: Listener? = null
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
-    ): PlaylistViewHolder = PlaylistViewHolder(LayoutSongHorizontalItemBinding.inflate(
+    ): PlaylistViewHolder = PlaylistViewHolder(LayoutPlaylistItemBinding.inflate(
         LayoutInflater.from(parent.context), parent, false
     ))
     override fun getItemCount() = playlists.size
@@ -29,19 +29,21 @@ class LibraryAdapter(
         this.playlists = playlists
     }
     inner class PlaylistViewHolder(
-        private val binding: LayoutSongHorizontalItemBinding
+        private val binding: LayoutPlaylistItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(playlist: Playlist) {
             binding.run {
-                tvTitle.text = playlist.title
-                tvDesc.text = playlist.desc
+                tvPlaylistTitle.text = playlist.title
+                tvPlaylistDesc.text = playlist.desc
+                val noOfSongs = "${playlist.songs.size} songs"
+                tvNoOfSongs.text = noOfSongs
                 val image = File(playlist.imagePath)
                 if(image.exists()) {
                     Glide.with(this.root)
                         .load(image)
-                        .into(ivPic)
+                        .into(ivPlaylistPic)
                 }
-                llHorizontal.setOnClickListener { listener?.onClick(playlist) }
+                llPlaylist.setOnClickListener { listener?.onClick(playlist) }
             }
         }
     }

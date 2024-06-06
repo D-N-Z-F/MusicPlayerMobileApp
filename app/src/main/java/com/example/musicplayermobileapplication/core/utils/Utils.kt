@@ -7,5 +7,6 @@ import java.io.File
 // Extension Functions
 fun File.isImage(): Boolean = Regex(Constants.IMAGE_REG).containsMatchIn(this.name)
 fun File.isAudio(): Boolean = Regex(Constants.AUDIO_REG).containsMatchIn(this.name)
-fun Genders.format(): String = this.toString().lowercase().replaceFirstChar { it.uppercase() }
-fun Statuses.format(): String = this.toString().lowercase().replaceFirstChar { it.uppercase() }
+fun String.capitalize(): String = this.replaceFirstChar { it.uppercase() }
+fun Genders.format(): String = this.toString().lowercase().capitalize()
+fun Statuses.format(): String = this.toString().lowercase().capitalize()

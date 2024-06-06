@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentSearchBinding
-import com.example.musicplayermobileapplication.ui.adapter.HomeItemAdapter
+import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import com.example.musicplayermobileapplication.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var songAdapter: HomeItemAdapter
+    private lateinit var songAdapter: SongAdapter
     private val viewModel: SharedViewModel by viewModels(
         ownerProducer = { requireParentFragment() }
     )
@@ -54,8 +54,8 @@ class SearchFragment : Fragment() {
         }
     }
     private fun setupAdapter() {
-        songAdapter = HomeItemAdapter(emptyList())
-        songAdapter.listener = object: HomeItemAdapter.Listener {
+        songAdapter = SongAdapter(emptyList())
+        songAdapter.listener = object: SongAdapter.Listener {
             override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
         }
         binding.run {

@@ -9,13 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentOnePlaylistBinding
-import com.example.musicplayermobileapplication.ui.adapter.HorizontalItemAdapter
+import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OnePlaylistFragment : Fragment() {
     private lateinit var binding: FragmentOnePlaylistBinding
-    private lateinit var horizontalItemAdapter: HorizontalItemAdapter
+    private lateinit var songAdapter: SongAdapter
 
     private var selectedPlaylistId = 0
 
@@ -35,16 +35,16 @@ class OnePlaylistFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        horizontalItemAdapter = HorizontalItemAdapter(emptyList())
+        songAdapter = SongAdapter(emptyList())
 
-        horizontalItemAdapter.listener = object : HorizontalItemAdapter.Listener {
+        songAdapter.listener = object : SongAdapter.Listener {
             override fun onClick(song: Song) {
                 findNavController().navigate(
                     ContainerFragmentDirections.containerToSong(song.id!!)
                 )
             }
         }
-        binding.rvFavourites.adapter = horizontalItemAdapter
+        binding.rvFavourites.adapter = songAdapter
         binding.rvFavourites.layoutManager = LinearLayoutManager(requireContext())
     }
 }

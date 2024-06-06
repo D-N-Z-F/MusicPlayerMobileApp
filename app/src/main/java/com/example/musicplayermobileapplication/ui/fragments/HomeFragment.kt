@@ -6,15 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentHomeBinding
-import com.example.musicplayermobileapplication.ui.adapter.HorizontalItemAdapter
-import com.example.musicplayermobileapplication.ui.adapter.LibraryAdapter
-import com.example.musicplayermobileapplication.ui.adapter.HomeItemAdapter
+import com.example.musicplayermobileapplication.ui.adapter.FavouriteAdapter
+import com.example.musicplayermobileapplication.ui.adapter.PlaylistAdapter
+import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import com.example.musicplayermobileapplication.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,9 +23,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var songAdapter: HomeItemAdapter
-    private lateinit var playlistAdapter: LibraryAdapter
-    private lateinit var favouriteAdapter: HorizontalItemAdapter
+    private lateinit var songAdapter: SongAdapter
+    private lateinit var playlistAdapter: PlaylistAdapter
+    private lateinit var favouriteAdapter: FavouriteAdapter
     private val viewModel: SharedViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,16 +68,16 @@ class HomeFragment : Fragment() {
     private fun setRecyclerView(data: List<*>) = if(data.isEmpty()) View.GONE else View.VISIBLE
     private fun setTextView(data: List<*>) = if(data.isNotEmpty()) View.GONE else View.VISIBLE
     private fun setupAdapters() {
-        songAdapter = HomeItemAdapter(emptyList())
-        songAdapter.listener = object: HomeItemAdapter.Listener {
+        songAdapter = SongAdapter(emptyList())
+        songAdapter.listener = object: SongAdapter.Listener {
             override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
         }
-        playlistAdapter = LibraryAdapter(emptyList())
-        playlistAdapter.listener = object: LibraryAdapter.Listener {
+        playlistAdapter = PlaylistAdapter(emptyList())
+        playlistAdapter.listener = object: PlaylistAdapter.Listener {
             override fun onClick(playlist: Playlist) { Log.d("debugging", playlist.id!!.toString()) }
         }
-        favouriteAdapter = HorizontalItemAdapter(emptyList())
-        favouriteAdapter.listener = object: HorizontalItemAdapter.Listener {
+        favouriteAdapter = FavouriteAdapter(emptyList(), 1)
+        favouriteAdapter.listener = object: FavouriteAdapter.Listener {
             override fun onClick(song: Song) { Log.d("debugging", song.toString()) }
         }
         binding.run {

@@ -10,7 +10,7 @@ data class Playlist(
     val id: Int? = null,
     val userId: Int,
     val title: String,
-    val desc: String,
+    val desc: String = "",
     val songs: List<Song> = emptyList(),
     val imagePath: String = "/storage/emulated/0/Download/MusicIcon.jpg"
 )

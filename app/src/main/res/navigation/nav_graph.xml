@@ -27,8 +27,11 @@
             android:id="@+id/containerToSong"
             app:destination="@id/individualSongFragment" />
         <action
-            android:id="@+id/containerToLibrary"
-            app:destination="@id/libraryFragment" />
+            android:id="@+id/containerToEditUser"
+            app:destination="@id/editUserFragment" />
+        <action
+            android:id="@+id/containerToAddEditPlaylist"
+            app:destination="@id/addEditPlaylistFragment" />
     </fragment>
     <fragment
         android:id="@+id/individualSongFragment"
@@ -39,11 +42,19 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/libraryFragment"
-        android:name="com.example.musicplayermobileapplication.ui.fragments.LibraryFragment"
-        android:label="LibraryFragment" >
+        android:id="@+id/editUserFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.EditUserFragment"
+        android:label="EditUserFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/addEditPlaylistFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.AddEditPlaylistFragment"
+        android:label="AddEditPlaylistFragment" >
         <argument
             android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>

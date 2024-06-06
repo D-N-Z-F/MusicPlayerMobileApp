@@ -10,9 +10,9 @@ import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.LayoutSongVerticalItemBinding
 import java.io.File
 
-class HomeItemAdapter(
+class SongAdapter(
     private var songs: List<Song>
-): RecyclerView.Adapter<HomeItemAdapter.HomeViewHolder>() {
+): RecyclerView.Adapter<SongAdapter.HomeViewHolder>() {
     var listener: Listener? = null
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -42,7 +42,7 @@ class HomeItemAdapter(
                         .load(image)
                         .into(ivSongPic)
                 }
-                rlSong.setOnClickListener { listener?.onClick(song) }
+                llSong.setOnClickListener { listener?.onClick(song) }
             }
         }
     }

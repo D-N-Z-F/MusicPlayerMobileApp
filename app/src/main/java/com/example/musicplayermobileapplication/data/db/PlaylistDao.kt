@@ -16,7 +16,7 @@ interface PlaylistDao {
     @Query("SELECT * FROM Playlist WHERE userId = :userId")
     fun getAllUserPlaylists(userId: Int): Flow<List<Playlist>>
     @Query("SELECT * FROM Playlist WHERE id = :id")
-    fun getPlaylistById(id: Int): Playlist?
+    fun getPlaylistById(id: Int): Flow<Playlist?>
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updatePlaylist(playlist: Playlist)
     @Delete
