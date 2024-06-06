@@ -2,30 +2,30 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:id="@+id/llPlaylist"
+        android:id="@+id/llHorizontal"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="20dp" >
+        android:padding="20dp">
 
         <ImageView
-            android:id="@+id/ivPlaylistPic"
+            android:id="@+id/ivPic"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:scaleType="centerCrop"
             android:layout_marginBottom="6dp"
-            android:src="@drawable/yoasobi"
-            android:contentDescription="@string/image" />
+            android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/yoasobi" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginStart="@dimen/ten_dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvPlaylistTitle"
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/semibold_poppins"
@@ -33,7 +33,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tvPlaylistDesc"
+                android:id="@+id/tvDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/light_poppins"

@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicplayermobileapplication.data.model.Song
-import com.example.musicplayermobileapplication.databinding.FragmentIndividualPlaylistBinding
-import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
+import com.example.musicplayermobileapplication.databinding.FragmentOnePlaylistBinding
+import com.example.musicplayermobileapplication.ui.adapter.HorizontalItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class IndividualPlaylistFragment : Fragment() {
-    private lateinit var binding: FragmentIndividualPlaylistBinding
-    private lateinit var playlistAdapter: SongAdapter
+class OnePlaylistFragment : Fragment() {
+    private lateinit var binding: FragmentOnePlaylistBinding
+    private lateinit var horizontalItemAdapter: HorizontalItemAdapter
 
     private var selectedPlaylistId = 0
 
@@ -23,7 +23,7 @@ class IndividualPlaylistFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentIndividualPlaylistBinding.inflate(layoutInflater, container, false)
+        binding = FragmentOnePlaylistBinding.inflate(layoutInflater, container, false)
 
         selectedPlaylistId = requireArguments().getInt("id")
         return binding.root
@@ -35,16 +35,16 @@ class IndividualPlaylistFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        playlistAdapter = SongAdapter(emptyList())
+        horizontalItemAdapter = HorizontalItemAdapter(emptyList())
 
-        playlistAdapter.listener = object : SongAdapter.Listener {
+        horizontalItemAdapter.listener = object : HorizontalItemAdapter.Listener {
             override fun onClick(song: Song) {
                 findNavController().navigate(
                     ContainerFragmentDirections.containerToSong(song.id!!)
                 )
             }
         }
-        binding.rvFavourites.adapter = playlistAdapter
+        binding.rvFavourites.adapter = horizontalItemAdapter
         binding.rvFavourites.layoutManager = LinearLayoutManager(requireContext())
     }
 }

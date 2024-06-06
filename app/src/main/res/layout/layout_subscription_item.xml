@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="70dp"
-    android:layout_height="25dp"
-    android:layout_gravity="center"
-    android:translationZ="@dimen/six_dp"
-    app:cardCornerRadius="@dimen/four_dp"
-    app:strokeColor="@android:color/transparent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gold_bg"
-        android:gravity="center">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:translationZ="@dimen/six_dp"
+        app:cardCornerRadius="@dimen/four_dp"
+        app:strokeColor="@android:color/transparent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Premium"
-            android:textColor="@color/black"
-            android:textSize="@dimen/twelve_sp" />
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rlStatus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gold_bg">
 
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/medium_poppins"
+                android:text="@string/status"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_sp" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
