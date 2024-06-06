@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.musicplayermobileapplication.core.utils.SongDiffUtil
 import com.example.musicplayermobileapplication.data.model.Song
-import com.example.musicplayermobileapplication.databinding.LayoutHomeSongItemBinding
-import com.example.musicplayermobileapplication.databinding.LayoutLibrarySongItemBinding
+import com.example.musicplayermobileapplication.databinding.LayoutSongVerticalItemBinding
+import com.example.musicplayermobileapplication.databinding.LayoutSongHorizontalItemBinding
 import java.io.File
 
 class FavouriteAdapter(
@@ -23,10 +23,10 @@ class FavouriteAdapter(
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
             VIEW_TYPE_GRID -> FavouriteHomeViewHolder(
-                LayoutHomeSongItemBinding.inflate(inflater, parent, false)
+                LayoutSongVerticalItemBinding.inflate(inflater, parent, false)
             )
             VIEW_TYPE_LINEAR -> FavouriteLibraryViewHolder(
-                LayoutLibrarySongItemBinding.inflate(inflater, parent, false)
+                LayoutSongHorizontalItemBinding.inflate(inflater, parent, false)
             )
             else -> throw IllegalArgumentException("Invalid View Type")
         }
@@ -46,7 +46,7 @@ class FavouriteAdapter(
         this.songs = songs
     }
     inner class FavouriteHomeViewHolder(
-        private val binding: LayoutHomeSongItemBinding
+        private val binding: LayoutSongVerticalItemBinding
     ): ViewHolder(binding.root) {
         fun bind(song: Song) {
             binding.run {
@@ -63,7 +63,7 @@ class FavouriteAdapter(
         }
     }
     inner class FavouriteLibraryViewHolder(
-        private val binding: LayoutLibrarySongItemBinding
+        private val binding: LayoutSongHorizontalItemBinding
     ): ViewHolder(binding.root) {
         fun bind(song: Song) {
             binding.run {

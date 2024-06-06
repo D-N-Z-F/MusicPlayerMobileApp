@@ -11,7 +11,7 @@ import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.data.model.User
 
-@Database(entities = [User::class, Song::class, Playlist::class, Favourite::class], version = 1)
+@Database(entities = [User::class, Song::class, Playlist::class, Favourite::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class MusicPlayerDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao

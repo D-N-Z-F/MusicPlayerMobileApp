@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.musicplayermobileapplication.core.utils.PlaylistDiffUtil
 import com.example.musicplayermobileapplication.data.model.Playlist
-import com.example.musicplayermobileapplication.databinding.LayoutHomePlaylistItemBinding
+import com.example.musicplayermobileapplication.databinding.LayoutPlaylistItemBinding
 import java.io.File
 
 class PlaylistAdapter(
@@ -16,7 +16,7 @@ class PlaylistAdapter(
     var listener: Listener? = null
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
-    ): PlaylistViewHolder = PlaylistViewHolder(LayoutHomePlaylistItemBinding.inflate(
+    ): PlaylistViewHolder = PlaylistViewHolder(LayoutPlaylistItemBinding.inflate(
         LayoutInflater.from(parent.context), parent, false
     ))
     override fun getItemCount() = playlists.size
@@ -29,7 +29,7 @@ class PlaylistAdapter(
         this.playlists = playlists
     }
     inner class PlaylistViewHolder(
-        private val binding: LayoutHomePlaylistItemBinding
+        private val binding: LayoutPlaylistItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(playlist: Playlist) {
             binding.run {

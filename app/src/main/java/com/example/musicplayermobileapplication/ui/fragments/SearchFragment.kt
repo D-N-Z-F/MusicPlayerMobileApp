@@ -39,6 +39,8 @@ class SearchFragment : Fragment() {
         setupAdapter()
         lifecycleScope.launch {
             viewModel.getAllSongs().collect {
+                binding.rvSearch.visibility = setRecyclerView(it)
+                binding.llEmptySongs.visibility = setTextView(it)
                 songList = it
                 songAdapter.setupSongs(it)
             }
@@ -54,6 +56,8 @@ class SearchFragment : Fragment() {
             })
         }
     }
+    private fun setRecyclerView(data: List<*>) = if(data.isEmpty()) View.GONE else View.VISIBLE
+    private fun setTextView(data: List<*>) = if(data.isNotEmpty()) View.GONE else View.VISIBLE
     private fun setupAdapter() {
         songAdapter = SongAdapter(emptyList())
         songAdapter.listener = object: SongAdapter.Listener {

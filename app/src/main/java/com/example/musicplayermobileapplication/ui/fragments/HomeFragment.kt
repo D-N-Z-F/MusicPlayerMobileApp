@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupAdapters()
         viewModel.run {
-//            addEssentials() // Temporary
+            addEssentials() // Temporary
             lifecycleScope.launch {
                 getAllSongs().collect {
                     binding.rvPopularSongs.visibility = setRecyclerView(it)
