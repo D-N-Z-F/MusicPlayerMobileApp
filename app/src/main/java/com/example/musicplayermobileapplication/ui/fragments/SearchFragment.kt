@@ -14,7 +14,6 @@ import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentSearchBinding
 import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import com.example.musicplayermobileapplication.ui.viewmodels.SharedViewModel
-import com.example.musicplayermobileapplication.ui.viewmodels.SongsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

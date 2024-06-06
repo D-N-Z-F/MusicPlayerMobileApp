@@ -14,7 +14,7 @@
         android:background="@drawable/song_bg2"
         android:paddingHorizontal="90dp"
         android:orientation="vertical"
-        tools:context=".ui.fragments.IndividualSongFragment">
+        tools:context=".ui.fragments.OneSongFragment">
 
         <ImageView
             android:id="@+id/ivSongPic"

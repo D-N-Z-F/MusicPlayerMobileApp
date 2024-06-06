@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.musicplayermobileapplication.databinding.FragmentIndividualSongBinding
+import com.example.musicplayermobileapplication.databinding.FragmentOneSongBinding
 import com.example.musicplayermobileapplication.ui.viewmodels.SongsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class IndividualSongFragment : Fragment() {
-    private lateinit var binding: FragmentIndividualSongBinding
+class OneSongFragment : Fragment() {
+    private lateinit var binding: FragmentOneSongBinding
     private val viewModel: SongsViewModel by viewModels()
 
     private var selectedSongId = 0
@@ -22,7 +20,7 @@ class IndividualSongFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentIndividualSongBinding.inflate(layoutInflater, container, false)
+        binding = FragmentOneSongBinding.inflate(layoutInflater, container, false)
 
         selectedSongId = requireArguments().getInt("id")
         return binding.root
@@ -33,8 +31,6 @@ class IndividualSongFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.run {
-            getSongById(selectedSongId)
-        }
+        viewModel.getSongById(selectedSongId)
     }
 }

@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/individualSongFragment"
-        android:name="com.example.musicplayermobileapplication.ui.fragments.IndividualSongFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.OneSongFragment"
         android:label="IndividualSongFragment" >
         <argument
             android:name="id"
