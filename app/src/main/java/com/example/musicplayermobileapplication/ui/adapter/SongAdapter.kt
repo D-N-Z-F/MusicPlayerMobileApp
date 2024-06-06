@@ -42,7 +42,7 @@ class SongAdapter(
                         .load(image)
                         .into(ivSongPic)
                 }
-                rlSong.setOnClickListener { listener?.onClick(song) }
+                llSong.setOnClickListener { listener?.onClick(song) }
             }
         }
     }

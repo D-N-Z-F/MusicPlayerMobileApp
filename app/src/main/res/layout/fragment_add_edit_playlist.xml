@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/blue_gradient_bg1"
+        android:paddingHorizontal="@dimen/thirty_dp"
+        tools:context=".ui.fragments.AddEditPlaylistFragment">
+
+        <TextView
+            android:id="@+id/tvAddEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="@dimen/thirty_dp"
+            android:fontFamily="@font/semibold_poppins"
+            android:textColor="@color/white"
+            android:textSize="@dimen/forty_sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiTitle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAddEdit"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:hint="@string/title"
+            app:boxBackgroundColor="@android:color/white"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@android:color/transparent"
+            app:shapeAppearance="@style/Cut">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiDesc"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tiTitle"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:hint="@string/description"
+            app:boxBackgroundColor="@android:color/white"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@android:color/transparent"
+            app:shapeAppearance="@style/Cut">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbAddEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tiDesc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/forty_dp"
+            android:backgroundTint="@color/green"
+            android:elevation="4dp"
+            android:fontFamily="@font/bold_chakrapetch"
+            android:text="@string/add"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:translationZ="6dp"
+            app:cornerRadius="20dp"/>
+
+    </RelativeLayout>
+
+</layout>

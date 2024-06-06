@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        android:id="@+id/rlSong"
+    <LinearLayout
+        android:id="@+id/llSong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
         android:padding="20dp">
 
         <ImageView
@@ -20,23 +22,19 @@
             android:id="@+id/tvSongTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/ivSongPic"
             android:fontFamily="@font/semibold_poppins"
             android:text="@string/title"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvSongArtist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tvSongTitle"
             android:fontFamily="@font/light_poppins"
             android:text="@string/artist"
             android:textColor="@color/dark_grey"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>

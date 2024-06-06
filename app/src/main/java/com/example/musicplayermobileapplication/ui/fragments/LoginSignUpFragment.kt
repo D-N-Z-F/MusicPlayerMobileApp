@@ -10,6 +10,7 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.musicplayermobileapplication.R
 import com.example.musicplayermobileapplication.databinding.FragmentLoginSignupBinding
 import com.example.musicplayermobileapplication.ui.viewmodels.LoginSignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,7 +77,10 @@ class LoginSignUpFragment : Fragment() {
         }
     }
     private fun checkLoginStatus() {
-        if(viewModel.isLoggedIn()) {
+        if(
+            viewModel.isLoggedIn()
+            && findNavController().currentDestination?.id == R.id.loginFragment
+            ) {
             findNavController().navigate(LoginSignUpFragmentDirections.loginToContainer())
         }
     }

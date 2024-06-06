@@ -2,14 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:id="@+id/llPlaylist"
+        android:id="@+id/llSong"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="20dp" >
 
         <ImageView
-            android:id="@+id/ivPlaylistPic"
+            android:id="@+id/ivSongPic"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:scaleType="centerCrop"
@@ -22,10 +22,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginStart="@dimen/ten_dp"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/tvPlaylistTitle"
+                android:id="@+id/tvSongTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/semibold_poppins"
@@ -33,20 +33,21 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvPlaylistDesc"
+                android:id="@+id/tvSongArtist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/light_poppins"
-                android:text="@string/description"
+                android:fontFamily="@font/semibold_poppins"
+                android:text="@string/artist"
                 android:textColor="@color/dark_grey"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tvNoOfSongs"
+                android:id="@+id/tvSongGenres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/light_poppins"
-                android:textSize="11sp" />
+                android:textColor="@color/dark_grey"
+                android:textSize="12sp" />
 
         </LinearLayout>
 

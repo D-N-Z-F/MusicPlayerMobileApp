@@ -35,6 +35,8 @@ class PlaylistAdapter(
             binding.run {
                 tvPlaylistTitle.text = playlist.title
                 tvPlaylistDesc.text = playlist.desc
+                val noOfSongs = "${playlist.songs.size} songs"
+                tvNoOfSongs.text = noOfSongs
                 val image = File(playlist.imagePath)
                 if(image.exists()) {
                     Glide.with(this.root)

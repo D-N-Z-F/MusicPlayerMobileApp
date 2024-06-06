@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
         playlistAdapter.listener = object: PlaylistAdapter.Listener {
             override fun onClick(playlist: Playlist) { Log.d("debugging", playlist.id!!.toString()) }
         }
-        favouriteAdapter = FavouriteAdapter(emptyList())
+        favouriteAdapter = FavouriteAdapter(emptyList(), 1)
         favouriteAdapter.listener = object: FavouriteAdapter.Listener {
             override fun onClick(song: Song) { Log.d("debugging", song.toString()) }
         }

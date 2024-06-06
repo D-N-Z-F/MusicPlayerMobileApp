@@ -36,7 +36,7 @@ class ContainerFragment : Fragment() {
         val tabIcons = listOf(R.drawable.ic_home, R.drawable.ic_search,
             R.drawable.ic_playlist, R.drawable.ic_profile)
 
-        val tabTexts = listOf("Home", "Search", "Playlist", "Profile")
+        val tabTexts = listOf("Home", "Search", "Library", "Profile")
 
         TabLayoutMediator(binding.tlTabs, binding.vpTabs) { tab, position ->
             val tabBinding = LayoutTabItemBinding.inflate(LayoutInflater.from(requireContext()))
