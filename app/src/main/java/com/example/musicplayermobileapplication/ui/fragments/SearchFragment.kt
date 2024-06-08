@@ -44,6 +44,7 @@ class SearchFragment : Fragment() {
                 songAdapter.setupSongs(it)
             }
         }
+
         binding.run {
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean = false
