@@ -39,16 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cvImage"
             android:layout_centerHorizontal="true"
-<<<<<<< HEAD
-            android:text="Kim Minji"
             android:textSize="@dimen/twenty_two_sp"
-            style="@style/Bebp"/>
-=======
-            android:fontFamily="@font/extrabold_poppins"
-            android:text="@string/username"
-            android:textColor="@color/black"
-            android:textSize="@dimen/twenty_two_sp" />
->>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
+            style="@style/Bebp"
+            android:text="@string/username"/>
 
         <ImageView
             android:id="@+id/ivEdit"
@@ -101,40 +94,22 @@
                     android:id="@+id/tvAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-<<<<<<< HEAD
-                    android:text="DOB: 7 May 2004"
-                    style="@style/Bmp"/>
-=======
-                    android:fontFamily="@font/medium_poppins"
                     android:text="@string/age"
-                    android:textColor="@color/black" />
->>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
+                    style="@style/Bmp"/>
 
                 <TextView
                     android:id="@+id/tvGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-<<<<<<< HEAD
-                    android:text="Gender: Female"
-                    style="@style/Bmp" />
-=======
-                    android:fontFamily="@font/medium_poppins"
                     android:text="@string/gender"
-                    android:textColor="@color/black" />
->>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
+                    style="@style/Bmp" />
 
                 <TextView
                     android:id="@+id/tvJoinedAt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-<<<<<<< HEAD
-                    android:text="Joined At: 24 Aug 2021"
-                    style="@style/Bmp" />
-=======
-                    android:fontFamily="@font/medium_poppins"
                     android:text="@string/joined_at"
-                    android:textColor="@color/black" />
->>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
+                    style="@style/Bmp" />
 
             </LinearLayout>
 
@@ -149,14 +124,8 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/green"
             android:elevation="4dp"
-<<<<<<< HEAD
-            android:text="Log Out"
-            style="@style/Bbcrp"
-=======
-            android:fontFamily="@font/bold_chakrapetch"
             android:text="@string/log_out"
-            android:textColor="@color/black"
->>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
+            style="@style/Bbcrp"
             android:textSize="@dimen/sixteen_sp"
             android:translationZ="6dp"
             app:cornerRadius="20dp" />
