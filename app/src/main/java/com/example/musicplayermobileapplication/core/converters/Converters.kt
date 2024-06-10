@@ -15,7 +15,13 @@ class Converters {
     fun stringToDate(data: String?): LocalDateTime? = data?.let { LocalDateTime.parse(it) }
     @TypeConverter
     fun dateToString(data: LocalDateTime?): String? = data?.toString()
-
+    @TypeConverter
+    fun genresToString(data: List<Genres>?): String? = data?.let { gson.toJson(it) }
+    @TypeConverter
+    fun stringToGenres(data: String?): List<Genres>? {
+        val listType: Type = object: TypeToken<List<Genres>>() {}.type
+        return data?.let { gson.fromJson(it, listType) }
+    }
     @TypeConverter
     fun stringToPlaylists(data: String?): List<Playlist>? {
         val listType: Type = object: TypeToken<List<Playlist>>() {}.type
@@ -31,20 +37,5 @@ class Converters {
     }
     @TypeConverter
     fun songsToString(data: List<Song>?): String? = data?.let { gson.toJson(it) }
-
-    @TypeConverter
-    fun stringToGenres(data: String?): List<Genres>? {
-        val listType: Type = object: TypeToken<List<Genres>>() {}.type
-        return data?.let { gson.fromJson(it, listType) }
-    }
-    @TypeConverter
-    fun genresToString(data: List<Genres>?): String? = data?.let { gson.toJson(it) }
-
-//    @TypeConverter
-//    fun stringToPlaylistList(data: String?): List<Playlist>? = data?.let { Json.decodeFromString(it) }
-//    @TypeConverter
-//    fun playlistListToString(data: List<Playlist>?): String? = data?.let {
-//        Json.encodeToString(serializer<List<Playlist>>(), it)
-//    }
-
 }
+

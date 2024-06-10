@@ -15,10 +15,8 @@ data class User(
     val age: Int,
     val bio: String = "",
     val gender: Genders,
-    val imagePath: String = "",
+    val imagePath: String = "/storage/emulated/0/Download/MONICA.jpg",
     val status: Statuses = Statuses.NORMAL,
-    val playlists: List<Playlist> = emptyList(),
-    val favourites: List<Song> = emptyList(),
     val joinedAt: LocalDateTime = LocalDateTime.now()
 )
 enum class Genders { MALE, FEMALE, NON_BINARY, UNDISCLOSED }

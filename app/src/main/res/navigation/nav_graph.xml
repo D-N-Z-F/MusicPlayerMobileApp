@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
@@ -12,6 +11,7 @@
         <action
             android:id="@+id/loginToContainer"
             app:destination="@id/containerFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -21,6 +21,40 @@
         <action
             android:id="@+id/containerToLogin"
             app:destination="@id/loginFragment"
+            app:popUpTo="@id/containerFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/containerToSong"
+            app:destination="@id/individualSongFragment" />
+        <action
+            android:id="@+id/containerToEditUser"
+            app:destination="@id/editUserFragment" />
+        <action
+            android:id="@+id/containerToAddEditPlaylist"
+            app:destination="@id/addEditPlaylistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/individualSongFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.OneSongFragment"
+        android:label="IndividualSongFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.EditUserFragment"
+        android:label="EditUserFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/addEditPlaylistFragment"
+        android:name="com.example.musicplayermobileapplication.ui.fragments.AddEditPlaylistFragment"
+        android:label="AddEditPlaylistFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>

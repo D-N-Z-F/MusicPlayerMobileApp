@@ -3,7 +3,7 @@ package com.example.musicplayermobileapplication.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.musicplayermobileapplication.core.auth.AuthService
+import com.example.musicplayermobileapplication.core.services.AuthService
 import com.example.musicplayermobileapplication.data.model.Genders
 import com.example.musicplayermobileapplication.data.model.User
 import com.example.musicplayermobileapplication.data.repository.UserRepo
@@ -36,15 +36,16 @@ class LoginSignUpViewModel @Inject constructor(
                         "Non-Binary" -> Genders.NON_BINARY
                         else -> Genders.UNDISCLOSED
                     }
-                    val user = userRepo.getUser(username.value!!, hashedPassword)
+                    val user = userRepo.validateUser(username.value!!, hashedPassword)
                     if(user == null) {
-                        userRepo.addUser(User(
+                        addUser(User(
                             username = username.value!!,
                             password = hashedPassword,
                             gender = selectedGender,
                             age = age
                         ))
-                        login(username.value!!)
+                        delay(200)
+                        validateLogin()
                     } else { showToast.postValue("User already exists!") }
                 }
             } catch (e: Exception) { showToast.postValue(e.message) }
@@ -57,8 +58,8 @@ class LoginSignUpViewModel @Inject constructor(
             try {
                 viewModelScope.launch(Dispatchers.IO) {
                     val hashedPassword = password.value!!.hashCode()
-                    val user = userRepo.getUser(username.value!!, hashedPassword)
-                    if(user != null) { login(username.value!!) }
+                    val user = userRepo.validateUser(username.value!!, hashedPassword)
+                    if(user != null) { login(user.id!!, username.value!!) }
                     else { showToast.postValue("User doesn't exist!") }
                 }
             } catch (e: Exception) { showToast.postValue(e.message) }
@@ -66,11 +67,14 @@ class LoginSignUpViewModel @Inject constructor(
             showToast.postValue("Please enter appropriate values for username and password!")
         }
     }
-    private fun login(username: String) {
+    private fun addUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) { userRepo.addUser(user) }
+    }
+    private fun login(id: Int, username: String) {
         viewModelScope.launch(Dispatchers.IO) {
             delay(200)
-            authService.login(username)
-            showToast.postValue("Login Successful!")
+            authService.login(id, username)
+            showToast.postValue("Success!")
             _finish.emit(Unit)
         }
     }

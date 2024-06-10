@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/peach_gradient_bg1"
+        android:orientation="vertical"
         android:padding="20dp"
         tools:context=".ui.fragments.LibraryFragment">
 
@@ -16,32 +18,73 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
+<<<<<<< HEAD
             android:text="Your Library"
             android:textSize="24sp"
             style="@style/DRsp"/>
+=======
+            android:fontFamily="@font/semibold_poppins"
+            android:text="@string/your_library"
+            android:textColor="@color/dark_red"
+            android:textSize="24sp" />
+>>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
+
+        <TextView
+            android:id="@+id/tvPlaylists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/semibold_poppins"
+            android:text="@string/playlists"
+            android:textColor="@color/dark_red"
+            android:textSize="20sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvLibrary"
+            android:id="@+id/rvPlaylists"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvLibrary" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabAddPlaylist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="@dimen/twenty_dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/green"
+<<<<<<< HEAD
             style="@style/Bbcrp"
             android:text="Add Playlist"
+=======
+            android:fontFamily="@font/bold_chakrapetch"
+            android:text="@string/add_playlist"
+            android:textColor="@color/black"
+>>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4
             android:textSize="16sp"
             app:cornerRadius="50dp"
             app:icon="@drawable/ic_add"
             app:iconTint="@color/black"
             />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tvFavourites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/semibold_poppins"
+            android:text="@string/favourites"
+            android:textColor="@color/dark_red"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </layout>

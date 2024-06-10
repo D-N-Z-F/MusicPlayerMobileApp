@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.musicplayermobileapplication.ui.viewmodels.SongsViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/song_bg2"
+        android:paddingHorizontal="90dp"
+        android:orientation="vertical"
+        tools:context=".ui.fragments.OneSongFragment">
+
+        <ImageView
+            android:id="@+id/ivSongPic"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="60dp"
+            android:src="@{viewModel.song.imagePath}" />
+
+        <TextView
+            android:id="@+id/tvSongTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+<<<<<<< HEAD:app/src/main/res/layout/fragment_individual_song.xml
+            android:layout_below="@id/ivSongPic"
+            android:text="Idol"
+            android:textSize="28sp"
+            style="@style/Webp"/>
+=======
+            android:fontFamily="@font/extrabold_poppins"
+            android:text="@{viewModel.song.title}"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+>>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4:app/src/main/res/layout/fragment_one_song.xml
+
+        <TextView
+            android:id="@+id/tvSongSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+<<<<<<< HEAD:app/src/main/res/layout/fragment_individual_song.xml
+            android:layout_below="@id/tvSongTitle"
+            android:text="Yoasobi"
+            android:textSize="20sp"
+            style="@style/Wmp"/>
+    </RelativeLayout>
+=======
+            android:fontFamily="@font/medium_poppins"
+            android:text="@{viewModel.song.artist}"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+>>>>>>> 4afc946c602c931ab7f041b12684e4f40a4709b4:app/src/main/res/layout/fragment_one_song.xml
+</layout>
