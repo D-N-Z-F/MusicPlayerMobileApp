@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.musicplayermobileapplication.core.utils.Constants
 import com.example.musicplayermobileapplication.core.utils.SongDiffUtil
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.LayoutSongVerticalItemBinding
@@ -22,10 +23,10 @@ class FavouriteAdapter(
     ): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            VIEW_TYPE_GRID -> FavouriteHomeViewHolder(
+            Constants.VIEW_TYPE_VERTICAL -> FavouriteVerticalViewHolder(
                 LayoutSongVerticalItemBinding.inflate(inflater, parent, false)
             )
-            VIEW_TYPE_LINEAR -> FavouriteLibraryViewHolder(
+            Constants.VIEW_TYPE_HORIZONTAL -> FavouriteHorizontalViewHolder(
                 LayoutSongHorizontalItemBinding.inflate(inflater, parent, false)
             )
             else -> throw IllegalArgumentException("Invalid View Type")
@@ -36,8 +37,8 @@ class FavouriteAdapter(
     override fun onBindViewHolder(
         holder: ViewHolder, position: Int
     ) =  when (holder) {
-        is FavouriteHomeViewHolder -> holder.bind(songs[position])
-        is FavouriteLibraryViewHolder -> holder.bind(songs[position])
+        is FavouriteVerticalViewHolder -> holder.bind(songs[position])
+        is FavouriteHorizontalViewHolder -> holder.bind(songs[position])
         else -> throw IllegalArgumentException("Invalid View Holder")
     }
     fun setupSongs(songs: List<Song>) {
@@ -45,7 +46,7 @@ class FavouriteAdapter(
         DiffUtil.calculateDiff(diffUtil).dispatchUpdatesTo(this)
         this.songs = songs
     }
-    inner class FavouriteHomeViewHolder(
+    inner class FavouriteVerticalViewHolder(
         private val binding: LayoutSongVerticalItemBinding
     ): ViewHolder(binding.root) {
         fun bind(song: Song) {
@@ -62,7 +63,7 @@ class FavouriteAdapter(
             }
         }
     }
-    inner class FavouriteLibraryViewHolder(
+    inner class FavouriteHorizontalViewHolder(
         private val binding: LayoutSongHorizontalItemBinding
     ): ViewHolder(binding.root) {
         fun bind(song: Song) {
@@ -80,8 +81,4 @@ class FavouriteAdapter(
         }
     }
     interface Listener { fun onClick(song: Song) }
-    companion object {
-        const val VIEW_TYPE_GRID = 1
-        const val VIEW_TYPE_LINEAR = 2
-    }
 }

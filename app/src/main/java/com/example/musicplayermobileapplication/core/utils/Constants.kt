@@ -8,4 +8,6 @@ object Constants {
     const val USER_ID = "userId"
     const val IMAGE_REG = ".jpg|.png|.jpeg|.gif|.bmp|.webp"
     const val AUDIO_REG = ".mp3|.wav|.m4a|.flac|.ogg|.aac|.wma|.amr"
+    const val VIEW_TYPE_VERTICAL = 1
+    const val VIEW_TYPE_HORIZONTAL = 2
 }

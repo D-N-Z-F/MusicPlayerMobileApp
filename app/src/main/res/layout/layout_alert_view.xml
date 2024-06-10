@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginHorizontal="40dp"
-    card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="40dp">
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Message"
-            android:textSize="16sp" />
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:padding="40dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPositive"
+            <TextView
+                android:id="@+id/tvHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:text="OK"
-                app:cornerRadius="10dp"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/green"
-                android:fontFamily="@font/bold_chakrapetch"/>
+                android:layout_marginBottom="8dp"
+                android:text="@string/header"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnNegative"
+            <TextView
+                android:id="@+id/tvBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Cancel"
-                app:cornerRadius="10dp"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/red"
-                android:fontFamily="@font/bold_chakrapetch"/>
+                android:text="@string/body"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPositive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/confirm"
+                    app:cornerRadius="10dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/green"
+                    android:fontFamily="@font/bold_chakrapetch"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNegative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/cancel"
+                    app:cornerRadius="10dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/red"
+                    android:fontFamily="@font/bold_chakrapetch"/>
+
+            </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

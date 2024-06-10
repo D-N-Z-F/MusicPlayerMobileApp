@@ -16,7 +16,7 @@ interface SongDao {
     @Query("SELECT * FROM Song")
     fun getAllSongs(): Flow<List<Song>>
     @Query("SELECT * FROM Song WHERE id = :id")
-    fun getSongById(id: Int): Song?
+    fun getSongById(id: Int): Flow<Song?>
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateSong(song: Song)
     @Delete

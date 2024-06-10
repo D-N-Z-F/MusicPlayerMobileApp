@@ -10,6 +10,8 @@ import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.musicplayermobileapplication.core.utils.setDataVisibility
+import com.example.musicplayermobileapplication.core.utils.setPlaceholderVisibility
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentSearchBinding
 import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
@@ -38,8 +40,8 @@ class SearchFragment : Fragment() {
         setupAdapter()
         lifecycleScope.launch {
             viewModel.getAllSongs().collect {
-                binding.rvSearch.visibility = setRecyclerView(it)
-                binding.llEmptySongs.visibility = setTextView(it)
+                binding.rvSearch.visibility = setDataVisibility(it)
+                binding.llEmptySongs.visibility = setPlaceholderVisibility(it)
                 songList = it
                 songAdapter.setupSongs(it)
             }
@@ -50,15 +52,15 @@ class SearchFragment : Fragment() {
                 override fun onQueryTextChange(query: String?): Boolean {
                     val filteredWords = viewModel.searchWord(query, songList)
                     songAdapter.setupSongs(filteredWords)
+                    rvSearch.visibility = setDataVisibility(filteredWords)
+                    llEmptySongs.visibility = setPlaceholderVisibility(filteredWords)
                     return true
                 }
             })
         }
     }
-    private fun setRecyclerView(data: List<*>) = if(data.isEmpty()) View.GONE else View.VISIBLE
-    private fun setTextView(data: List<*>) = if(data.isNotEmpty()) View.GONE else View.VISIBLE
     private fun setupAdapter() {
-        songAdapter = SongAdapter(emptyList())
+        songAdapter = SongAdapter(emptyList(), 1)
         songAdapter.listener = object: SongAdapter.Listener {
             override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
         }

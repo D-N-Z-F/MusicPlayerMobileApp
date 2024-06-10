@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.musicplayermobileapplication.core.utils.setDataVisibility
+import com.example.musicplayermobileapplication.core.utils.setPlaceholderVisibility
 import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentLibraryBinding
@@ -39,13 +41,19 @@ class LibraryFragment : Fragment() {
         viewModel.run {
             lifecycleScope.launch {
                 getAllUserPlaylists().collect {
+                    binding.rvPlaylists.visibility = setDataVisibility(it)
+                    binding.tvEmptyPlaylists.visibility = setPlaceholderVisibility(it)
                     playlistAdapter.setupPlaylists(it)
                 }
-
             }
             lifecycleScope.launch {
                 getAllUserFavourites().collect {
-                    it?.let { favouriteAdapter.setupSongs(it.favourites) }
+                    it?.let {
+                        val songs = it.favourites
+                        binding.rvFavourites.visibility = setDataVisibility(songs)
+                        binding.tvEmptyFavourites.visibility = setPlaceholderVisibility(songs)
+                        favouriteAdapter.setupSongs(songs)
+                    }
                 }
             }
         }
@@ -59,12 +67,18 @@ class LibraryFragment : Fragment() {
         playlistAdapter = PlaylistAdapter(emptyList())
         playlistAdapter.listener = object: PlaylistAdapter.Listener {
             override fun onClick(playlist: Playlist) {
-                Log.d("debugging", playlist.id!!.toString())
+                findNavController().navigate(
+                    ContainerFragmentDirections.containerToViewPlaylist(playlist.id!!)
+                )
             }
         }
         favouriteAdapter = FavouriteAdapter(emptyList(), 2)
         favouriteAdapter.listener = object: FavouriteAdapter.Listener {
-            override fun onClick(song: Song) { Log.d("debugging", song.id!!.toString()) }
+            override fun onClick(song: Song) {
+                findNavController().navigate(
+                    ContainerFragmentDirections.containerToViewSong(song.id!!)
+                )
+            }
         }
         binding.run {
             rvPlaylists.adapter = playlistAdapter

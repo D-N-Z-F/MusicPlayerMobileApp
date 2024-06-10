@@ -19,29 +19,29 @@ class AddEditPlaylistViewModel @Inject constructor(
     private val playlistRepo: PlaylistRepo,
     private val authService: AuthService
 ): ViewModel() {
-    private val _finish: MutableSharedFlow<Unit> = MutableSharedFlow()
-    val finish: SharedFlow<Unit> = _finish
+    private val _finish: MutableSharedFlow<Byte> = MutableSharedFlow()
+    val finish: SharedFlow<Byte> = _finish
     val showToast: MutableLiveData<String> = MutableLiveData()
     private var originalPlaylistData: Playlist? = null
-    private fun triggerFinish() { viewModelScope.launch { _finish.emit(Unit) } }
+    private fun triggerFinish(value: Byte) { viewModelScope.launch { _finish.emit(value) } }
     private fun getUserId() = authService.getUserId()
-    fun getPlaylistById(): Flow<Playlist?> = playlistRepo.getPlaylistById(getUserId())
+    fun getPlaylistById(id: Int): Flow<Playlist?> = playlistRepo.getPlaylistById(id)
     fun setupOriginal(playlist: Playlist) { originalPlaylistData = playlist }
     fun validatePlaylist(type: String, title: String, desc: String) {
+        if(title == "") {
+            showToast.postValue("Please enter an appropriate title!")
+            return
+        }
         if(type == "add") {
-            if(title == "") {
-                showToast.postValue("Please enter an appropriate title!")
-            } else {
-                addPlaylist(
-                    Playlist(
-                        userId = getUserId(),
-                        title = title,
-                        desc = desc,
-                    )
-                )
-            }
+            addPlaylist(Playlist(userId = getUserId(), title = title, desc = desc))
         } else if(type == "edit") {
-            showToast.postValue("EDIT'S WORKING??")
+            originalPlaylistData?.let {
+                if(title == it.title && desc == it.desc) {
+                    showToast.postValue("Nothing to change!")
+                } else {
+                    updatePlaylist(it.copy(title = title, desc = desc))
+                }
+            }
         }
     }
     private fun addPlaylist(playlist: Playlist) {
@@ -49,11 +49,28 @@ class AddEditPlaylistViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 playlistRepo.addPlaylist(playlist)
                 showToast.postValue("Added Successfully!")
-                _finish.emit(Unit)
             }
         } catch (e: Exception) { showToast.postValue(e.message) }
+        triggerFinish(0)
     }
     private fun updatePlaylist(playlist: Playlist) {
-        try {} catch (e: Exception) { showToast.postValue(e.message) }
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                playlistRepo.updatePlaylist(playlist)
+                showToast.postValue("Updated Successfully!")
+            }
+        } catch (e: Exception) { showToast.postValue(e.message) }
+        triggerFinish(0)
+    }
+    fun deletePlaylist() {
+        try {
+            originalPlaylistData?.let {
+                viewModelScope.launch(Dispatchers.IO) {
+                    playlistRepo.deletePlaylist(it)
+                    showToast.postValue("Deleted Successfully!")
+                }
+            }
+        } catch (e: Exception) { showToast.postValue(e.message) }
+        triggerFinish(1)
     }
 }
