@@ -45,9 +45,8 @@
                 android:layout_marginEnd="20dp"
                 android:text="OK"
                 app:cornerRadius="10dp"
-                android:textColor="@color/white"
                 android:backgroundTint="@color/green"
-                android:fontFamily="@font/bold_chakrapetch"/>
+                style="@style/Wbcrp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnNegative"
@@ -56,9 +55,8 @@
                 android:layout_marginStart="20dp"
                 android:text="Cancel"
                 app:cornerRadius="10dp"
-                android:textColor="@color/white"
                 android:backgroundTint="@color/red"
-                android:fontFamily="@font/bold_chakrapetch"/>
+                style="@style/Wbcrp" />
 
         </LinearLayout>
     </LinearLayout>

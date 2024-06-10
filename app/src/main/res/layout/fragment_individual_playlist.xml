@@ -20,10 +20,9 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/extrabold_poppins"
                 android:text="NewJeans"
-                android:textColor="@color/white"
-                android:textSize="@dimen/forty_sp" />
+                android:textSize="@dimen/forty_sp"
+                style="@style/Webp"/>
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView

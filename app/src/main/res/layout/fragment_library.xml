@@ -16,10 +16,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/semibold_poppins"
             android:text="Your Library"
-            android:textColor="@color/dark_red"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            style="@style/DRsp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLibrary"
@@ -35,13 +34,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/green"
-            android:fontFamily="@font/bold_chakrapetch"
+            style="@style/Bbcrp"
             android:text="Add Playlist"
-            android:textColor="@color/black"
             android:textSize="16sp"
             app:cornerRadius="50dp"
             app:icon="@drawable/ic_add"
-            app:iconTint="@color/black" />
+            app:iconTint="@color/black"
+            />
 
     </RelativeLayout>
 

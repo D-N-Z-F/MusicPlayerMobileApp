@@ -17,9 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/medium_poppins"
             android:text="Premium"
-            android:textColor="@color/black"
+            style="@style/Bmp"
             android:textSize="@dimen/twelve_sp" />
     </RelativeLayout>
 

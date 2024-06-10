@@ -13,11 +13,8 @@
             android:id="@+id/tvPopularSongs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/semibold_poppins"
             android:text="Popular Songs"
-            android:textColor="@color/dark_red"
-            android:textSize="20sp" />
+            style="@style/DRsp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPopularSongs"
@@ -30,11 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/rvPopularSongs"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/semibold_poppins"
             android:text="Your Playlists"
-            android:textColor="@color/dark_red"
-            android:textSize="20sp" />
+            style="@style/DRsp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPlaylists"
@@ -47,11 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/rvPlaylists"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/semibold_poppins"
             android:text="Your Favourites"
-            android:textColor="@color/dark_red"
-            android:textSize="20sp" />
+            style="@style/DRsp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavourites"

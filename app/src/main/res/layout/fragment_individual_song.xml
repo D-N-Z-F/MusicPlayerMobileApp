@@ -21,19 +21,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ivSongPic"
-            android:fontFamily="@font/extrabold_poppins"
             android:text="Idol"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            style="@style/Webp"/>
 
         <TextView
             android:id="@+id/tvSongSinger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvSongTitle"
-            android:fontFamily="@font/medium_poppins"
             android:text="Yoasobi"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            style="@style/Wmp"/>
     </RelativeLayout>
 </layout>

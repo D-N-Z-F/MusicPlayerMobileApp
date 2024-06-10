@@ -38,10 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cvSongPic"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/extrabold_poppins"
             android:text="Kim Minji"
-            android:textColor="@color/black"
-            android:textSize="@dimen/twenty_two_sp" />
+            android:textSize="@dimen/twenty_two_sp"
+            style="@style/Bebp"/>
 
         <include
             android:id="@+id/subscriptionStatus"
@@ -83,25 +82,22 @@
                     android:id="@+id/tvDOB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium_poppins"
                     android:text="DOB: 7 May 2004"
-                    android:textColor="@color/black" />
+                    style="@style/Bmp"/>
 
                 <TextView
                     android:id="@+id/tvGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium_poppins"
                     android:text="Gender: Female"
-                    android:textColor="@color/black" />
+                    style="@style/Bmp" />
 
                 <TextView
                     android:id="@+id/tvJoinedDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium_poppins"
                     android:text="Joined At: 24 Aug 2021"
-                    android:textColor="@color/black" />
+                    style="@style/Bmp" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -115,9 +111,8 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/green"
             android:elevation="4dp"
-            android:fontFamily="@font/bold_chakrapetch"
             android:text="Log Out"
-            android:textColor="@color/black"
+            style="@style/Bbcrp"
             android:textSize="@dimen/sixteen_sp"
             android:translationZ="6dp"
             app:cornerRadius="20dp" />
