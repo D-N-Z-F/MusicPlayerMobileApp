@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/peach_gradient_bg1"
+        tools:context=".ui.fragments.FavouritesFragment">
+
+        <RelativeLayout
+            android:id="@+id/rlFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:background="@drawable/favourites_bg">
+
+            <TextView
+                android:id="@+id/tvLibrary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Favourites"
+                android:textSize="@dimen/forty_sp"
+                style="@style/Webp"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlFavourites"
+            android:paddingHorizontal="20dp" />
+
+    </RelativeLayout>
+</layout>
+
+
+

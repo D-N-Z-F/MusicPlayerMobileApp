@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/sixteen_dp"
+    app:cardBackgroundColor="@color/light_beige"
+    app:cardCornerRadius="@dimen/eight_dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/semibold_poppins"
+        android:text="Genres"
+        android:textSize="@dimen/twenty_sp" />
+
+    <RadioGroup
+        android:id="@+id/rgGenres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:paddingHorizontal="130dp">
+
+        <RadioButton
+            android:id="@+id/rbEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:fontFamily="@font/medium_poppins"
+            android:text="English" />
+
+        <RadioButton
+            android:id="@+id/rbChinese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium_poppins"
+            android:text="Chinese" />
+
+        <RadioButton
+            android:id="@+id/rbJazz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium_poppins"
+            android:text="Jazz" />
+
+        <RadioButton
+            android:id="@+id/rbPop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium_poppins"
+            android:text="Pop" />
+
+        <RadioButton
+            android:id="@+id/rbClassical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium_poppins"
+            android:text="Classical" />
+
+        <RadioButton
+            android:id="@+id/rbElectronic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium_poppins"
+            android:text="Electronic Music" />
+    </RadioGroup>
+
+</com.google.android.material.card.MaterialCardView>

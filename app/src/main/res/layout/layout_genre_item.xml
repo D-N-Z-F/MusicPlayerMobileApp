@@ -13,9 +13,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:fontFamily="@font/semibold_poppins"
             android:text="Work"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            style="@style/Wsp"/>
     </androidx.cardview.widget.CardView>
 </layout>
