@@ -13,6 +13,8 @@ import kotlinx.coroutines.flow.Flow
 interface SongDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addSong(song: Song)
+    @Query("SELECT * FROM Song WHERE title = :title AND artist = :artist")
+    fun validateSong(title: String, artist: String): Song?
     @Query("SELECT * FROM Song")
     fun getAllSongs(): Flow<List<Song>>
     @Query("SELECT * FROM Song WHERE id = :id")

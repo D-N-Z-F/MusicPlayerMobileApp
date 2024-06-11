@@ -10,9 +10,11 @@
             type="com.example.musicplayermobileapplication.ui.viewmodels.LoginSignUpViewModel" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
         android:background="@drawable/blue_gradient_bg1"
         tools:context=".ui.fragments.LoginSignUpFragment">
 
@@ -20,11 +22,10 @@
             android:id="@+id/tvMusicPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginVertical="80dp"
+            android:layout_margin="20dp"
             android:fontFamily="@font/extrabold_poppins"
-            android:gravity="center"
-            android:text="Music Player"
+            android:text="@string/music_player"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="65sp" />
 
@@ -32,13 +33,11 @@
             android:id="@+id/mbSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvMusicPlayer"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
+            android:layout_marginVertical="16dp"
             android:backgroundTint="@color/green"
             android:elevation="4dp"
             android:fontFamily="@font/bold_chakrapetch"
-            android:text="Sign Up For Free"
+            android:text="@string/sign_up_for_free"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:translationZ="6dp"
@@ -48,14 +47,12 @@
             android:id="@+id/tvLogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/mbSignUp"
-            android:layout_centerHorizontal="true"
             android:fontFamily="@font/bold_chakrapetch"
             android:shadowColor="@color/white"
             android:shadowDx="6"
             android:shadowDy="6"
             android:shadowRadius="10"
-            android:text="Log In"
+            android:text="@string/log_in"
             android:textColor="@color/black"
             android:textSize="20sp"/>
 
@@ -64,9 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tvMusicPlayer"
-            android:visibility="invisible">
+            android:visibility="gone">
 
             <EditText
                 android:id="@+id/etUsername"
@@ -75,7 +70,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:padding="10dp"
                 android:background="@drawable/input_box"
-                android:hint="Username"
+                android:hint="@string/username"
                 android:autofillHints="username"
                 android:inputType="text"
                 android:text="@={viewModel.username}"/>
@@ -88,7 +83,7 @@
                 android:padding="10dp"
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/input_box"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:autofillHints="username"
                 android:inputType="textPassword"
                 android:text="@={viewModel.password}"/>
@@ -127,7 +122,7 @@
                 android:backgroundTint="@color/green"
                 android:elevation="4dp"
                 android:fontFamily="@font/bold_chakrapetch"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:translationZ="6dp"
@@ -143,12 +138,12 @@
                 android:shadowDx="6"
                 android:shadowDy="6"
                 android:shadowRadius="10"
-                android:text="Back"
+                android:text="@string/back"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>

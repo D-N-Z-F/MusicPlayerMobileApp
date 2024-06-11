@@ -1,23 +1,20 @@
 package com.example.musicplayermobileapplication.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.musicplayermobileapplication.core.utils.setDataVisibility
-import com.example.musicplayermobileapplication.core.utils.setPlaceholderVisibility
 import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentLibraryBinding
 import com.example.musicplayermobileapplication.ui.adapter.FavouriteAdapter
 import com.example.musicplayermobileapplication.ui.adapter.PlaylistAdapter
-import com.example.musicplayermobileapplication.ui.adapter.SongAdapter
 import com.example.musicplayermobileapplication.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -27,7 +24,9 @@ class LibraryFragment : Fragment() {
     private lateinit var binding: FragmentLibraryBinding
     private lateinit var playlistAdapter: PlaylistAdapter
     private lateinit var favouriteAdapter: FavouriteAdapter
-    private val viewModel: SharedViewModel by viewModels()
+    private val viewModel: SharedViewModel by viewModels(
+        ownerProducer = { requireParentFragment() }
+    )
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,8 +40,8 @@ class LibraryFragment : Fragment() {
         viewModel.run {
             lifecycleScope.launch {
                 getAllUserPlaylists().collect {
-                    binding.rvPlaylists.visibility = setDataVisibility(it)
-                    binding.tvEmptyPlaylists.visibility = setPlaceholderVisibility(it)
+                    binding.rvPlaylists.isGone = it.isEmpty()
+                    binding.tvEmptyPlaylists.isGone = it.isNotEmpty()
                     playlistAdapter.setupPlaylists(it)
                 }
             }
@@ -50,8 +49,8 @@ class LibraryFragment : Fragment() {
                 getAllUserFavourites().collect {
                     it?.let {
                         val songs = it.favourites
-                        binding.rvFavourites.visibility = setDataVisibility(songs)
-                        binding.tvEmptyFavourites.visibility = setPlaceholderVisibility(songs)
+                        binding.rvFavourites.isGone = songs.isEmpty()
+                        binding.tvEmptyFavourites.isGone = songs.isNotEmpty()
                         favouriteAdapter.setupSongs(songs)
                     }
                 }

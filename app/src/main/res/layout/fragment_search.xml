@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,26 +32,30 @@
                 android:id="@+id/searchView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
+                android:layout_weight="5"
                 android:background="@drawable/input_box"
                 android:iconifiedByDefault="false"
-                android:queryHint="What song to listen?" />
+                android:queryHint="Search for a song..." />
 
             <ImageButton
+                android:id="@+id/ivFilter"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_sort_genres"
+                android:background="@color/light_beige"
+                android:src="@drawable/ic_filter"
                 android:contentDescription="@string/image" />
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSearch"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/llEmptySongs"
@@ -67,7 +72,6 @@
                 android:text="@string/nothing_to_show" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 

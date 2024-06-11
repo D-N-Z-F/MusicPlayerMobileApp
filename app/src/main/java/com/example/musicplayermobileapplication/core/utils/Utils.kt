@@ -5,6 +5,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicplayermobileapplication.data.model.Genders
+import com.example.musicplayermobileapplication.data.model.Genres
 import com.example.musicplayermobileapplication.data.model.Statuses
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -13,6 +14,15 @@ import java.util.concurrent.TimeUnit
 fun File.isImage(): Boolean = Regex(Constants.IMAGE_REG).containsMatchIn(this.name)
 fun File.isAudio(): Boolean = Regex(Constants.AUDIO_REG).containsMatchIn(this.name)
 fun String.capitalize(): String = this.replaceFirstChar { it.uppercase() }
+fun String.getDetailsFromAudioPath(): Pair<String, String> {
+    val regex = Regex(".*/(.+?) - (.+?)\\.mp3")
+    val result = regex.find(this)
+    return Pair(
+        result?.groups?.get(1)?.value ?: "",
+        result?.groups?.get(2)?.value ?: ""
+    )
+}
+fun Genres.format(): String = this.toString().lowercase().capitalize()
 fun Genders.format(): String = this.toString().lowercase().capitalize()
 fun Statuses.format(): String = this.toString().lowercase().capitalize()
 fun Int.format(): String {
@@ -20,5 +30,3 @@ fun Int.format(): String {
     val seconds = TimeUnit.MILLISECONDS.toSeconds(this.toLong()) % 60
     return String.format("%02d:%02d", minutes, seconds)
 }
-fun setDataVisibility(data: List<*>): Int = if(data.isEmpty()) View.GONE else View.VISIBLE
-fun setPlaceholderVisibility(data: List<*>): Int = if(data.isNotEmpty()) View.GONE else View.VISIBLE

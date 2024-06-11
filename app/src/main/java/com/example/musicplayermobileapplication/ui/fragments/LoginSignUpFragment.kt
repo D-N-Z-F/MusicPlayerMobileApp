@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isInvisible
+import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -55,12 +55,12 @@ class LoginSignUpFragment : Fragment() {
     private fun toggleDetails(registering: Boolean, clickBack: Boolean = false) {
         binding.run {
             isRegister = registering
-            mbSignUp.isInvisible = !clickBack
-            tvLogIn.isInvisible = !clickBack
-            llDetails.isInvisible = clickBack
-            spGender.isInvisible = !registering
+            mbSignUp.isGone = !clickBack
+            tvLogIn.isGone = !clickBack
+            llDetails.isGone = clickBack
+            spGender.isGone = !registering
             spGender.setSelection(0)
-            npAge.isInvisible = !registering
+            npAge.isGone = !registering
             npAge.value = 1
             viewModel?.username?.postValue("")
             viewModel?.password?.postValue("")

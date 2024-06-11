@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/sixteen_dp"
+        app:cardBackgroundColor="@color/light_beige"
+        app:cardCornerRadius="@dimen/eight_dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/twenty_dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/semibold_poppins"
+                android:text="@string/genres"
+                android:textSize="@dimen/twenty_sp" />
+
+            <RadioGroup
+                android:id="@+id/rgGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rbAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/twenty_dp"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp"
+                    android:text="@string/all"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rbRnB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <RadioButton
+                    android:id="@+id/rbClassical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <RadioButton
+                    android:id="@+id/rbJazz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <RadioButton
+                    android:id="@+id/rbKorean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <RadioButton
+                    android:id="@+id/rbChinese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <RadioButton
+                    android:id="@+id/rbEnglish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+                <RadioButton
+                    android:id="@+id/rbPopular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_poppins"
+                    android:textSize="@dimen/sixteen_sp" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPositive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/confirm"
+                    app:cornerRadius="10dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/green"
+                    android:fontFamily="@font/bold_chakrapetch"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNegative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/cancel"
+                    app:cornerRadius="10dp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/red"
+                    android:fontFamily="@font/bold_chakrapetch"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

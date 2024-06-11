@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MusicPlayerMobileApplication</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="select_gender">Select Gender</string>
     <string name="title">Title</string>
     <string name="artist">Artist</string>
@@ -30,8 +29,6 @@
         <item>Female</item>
         <item>Non-Binary</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_edit_playlist">%s Playlist</string>
     <string name="add">Add</string>
     <string name="songs">Songs</string>
@@ -41,4 +38,17 @@
     <string name="confirm">Confirm</string>
     <string name="header">Header</string>
     <string name="body">Body</string>
+    <string name="popular_songs">Popular Songs</string>
+    <string name="your_playlists">Your Playlists</string>
+    <string name="your_favourites">Your Favourites</string>
+    <string name="music_player">Music Player</string>
+    <string name="sign_up_for_free">Sign Up For Free</string>
+    <string name="log_in">Log In</string>
+    <string name="submit">Submit</string>
+    <string name="back">Back</string>
+    <string name="duration_start">0:00</string>
+    <string name="duration_end">3:00</string>
+    <string name="genre">Genre</string>
+    <string name="genres">Genres</string>
+    <string name="all">All</string>
 </resources>

@@ -40,40 +40,30 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/ivFav"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_fav"
-            android:contentDescription="@string/image" />
+            android:orientation="horizontal" >
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="5dp">-->
+            <ImageView
+                android:id="@+id/ivFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_fav"
+                android:contentDescription="@string/image" />
 
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_edit"-->
-<!--                android:contentDescription="@string/edit" />-->
+            <ImageView
+                android:id="@+id/ivPlaylist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_circle_add"
+                app:tint="@color/white"
+                android:contentDescription="@string/image" />
 
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="5dp"-->
-<!--                android:src="@drawable/ic_circle_add"-->
-<!--                android:contentDescription="@string/edit" />-->
-
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_fav"-->
-<!--                android:contentDescription="@string/edit" />-->
-
-<!--        </LinearLayout>-->
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -92,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_alignStart="@id/progressBar"
-                android:text="0:00"
+                android:text="@string/duration_start"
                 android:textColor="@color/white" />
 
             <TextView
@@ -101,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_alignEnd="@id/progressBar"
-                android:text="3:00"
+                android:text="@string/duration_end"
                 android:textColor="@color/white" />
 
         </RelativeLayout>

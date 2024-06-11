@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.musicplayermobileapplication.R
+import com.example.musicplayermobileapplication.core.modals.Modals
 import com.example.musicplayermobileapplication.core.utils.format
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentViewSongBinding
@@ -32,6 +33,7 @@ class ViewSongFragment : Fragment() {
     private lateinit var binding: FragmentViewSongBinding
     private val viewModel: ViewSongViewModel by viewModels()
     private val args: ViewSongFragmentArgs by navArgs()
+    private lateinit var modal: Modals
 
     private lateinit var mediaPlayer: MediaPlayer
     private val handler = Handler(Looper.getMainLooper())
@@ -58,12 +60,13 @@ class ViewSongFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        modal = Modals(requireContext())
         btnPlayPause = binding.btnPlayPause
         viewModel.run {
             lifecycleScope.launch {
                 getSongById(args.id).collect {
                     it?.let {
-                        setSongId(it.id!!)
+                        setSong(it)
                         setupDetails(it)
                         val audioFile = File(it.filePath)
                         if(audioFile.exists()) { setupAudioPlayer(Uri.fromFile(audioFile)) }
@@ -77,6 +80,16 @@ class ViewSongFragment : Fragment() {
                 getAllUserFavourites().collect {
                     it?.let { setFavourite(it) }
                     setLikedStatus()
+                }
+            }
+            binding.ivPlaylist.setOnClickListener {
+                lifecycleScope.launch {
+                    getAllUserPlaylists().collect {
+                        Log.d("debugging", it.toString())
+                        modal.showPlaylistsDialog(it) { playlist ->
+                            viewModel.addRemoveFromPlaylist(playlist)
+                        }
+                    }
                 }
             }
         }

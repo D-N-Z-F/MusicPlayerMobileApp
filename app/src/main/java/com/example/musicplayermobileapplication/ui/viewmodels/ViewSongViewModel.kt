@@ -10,6 +10,7 @@ import com.example.musicplayermobileapplication.data.model.Favourite
 import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.data.repository.FavouriteRepo
+import com.example.musicplayermobileapplication.data.repository.PlaylistRepo
 import com.example.musicplayermobileapplication.data.repository.SongRepo
 import com.example.musicplayermobileapplication.data.repository.UserRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,20 +24,34 @@ import javax.inject.Inject
 class ViewSongViewModel @Inject constructor(
     private val favouriteRepo: FavouriteRepo,
     private val songRepo: SongRepo,
+    private val playlistRepo: PlaylistRepo,
     private val authService: AuthService
 ) : ViewModel() {
     val showToast: MutableLiveData<String> = MutableLiveData()
-    private var songId: Int? = null
+    private var song: Song? = null
     private var favourite: Favourite? = null
     private fun getUserId(): Int = authService.getUserId()
-    fun setSongId(id: Int) { songId = id }
+    fun setSong(song: Song) { this.song = song }
     fun setFavourite(favourite: Favourite) { this.favourite = favourite }
     fun getSongById(id: Int): Flow<Song?> = songRepo.getSongById(id)
     fun getAllUserFavourites(): Flow<Favourite?> = favouriteRepo.getAllUserFavourites(getUserId())
+    fun getAllUserPlaylists(): Flow<List<Playlist>> = playlistRepo.getAllUserPlaylists(getUserId())
+    fun addRemoveFromPlaylist(playlist: Playlist) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val songs = playlist.songs.toMutableList()
+            val existingSong = songs.find { it.id == song?.id }
+            if(existingSong == null) { songs.add(song!!) }
+            else { songs.remove(song!!) }
+            playlistRepo.updatePlaylist(playlist.copy(songs = songs.toList()))
+            showToast.postValue(
+                "${if(existingSong == null) "Added" else "Removed"} Successfully!"
+            )
+        }
+    }
     fun isFavourited(): Boolean {
         favourite?.let {
             val favourites = it.favourites
-            val list = favourites.filter { each -> each.id == songId }
+            val list = favourites.filter { each -> each.id == song?.id }
             Log.d("debugging", list.toString())
             return list.isNotEmpty()
         }

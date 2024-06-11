@@ -11,14 +11,6 @@
         app:cardCornerRadius="@dimen/four_dp"
         app:strokeColor="@android:color/transparent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Premium"
-            style="@style/Bmp"
-            android:textSize="@dimen/twelve_sp" />
-
         <RelativeLayout
             android:id="@+id/rlStatus"
             android:layout_width="match_parent"
@@ -30,10 +22,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/medium_poppins"
+                style="@style/Bmp"
                 android:text="@string/status"
-                android:textColor="@color/black"
                 android:textSize="@dimen/twelve_sp" />
+
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>

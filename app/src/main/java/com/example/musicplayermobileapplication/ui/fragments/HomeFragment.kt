@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.musicplayermobileapplication.core.utils.setDataVisibility
-import com.example.musicplayermobileapplication.core.utils.setPlaceholderVisibility
 import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentHomeBinding
@@ -39,18 +38,17 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupAdapters()
         viewModel.run {
-//            addEssentials() // Temporary
             lifecycleScope.launch {
                 getAllSongs().collect {
-                    binding.rvPopularSongs.visibility = setDataVisibility(it)
-                    binding.tvEmptySongs.visibility = setPlaceholderVisibility(it)
+                    binding.rvPopularSongs.isGone = it.isEmpty()
+                    binding.tvEmptySongs.isGone = it.isNotEmpty()
                     songAdapter.setupSongs(it)
                 }
             }
             lifecycleScope.launch {
                 getAllUserPlaylists().collect {
-                    binding.rvPlaylists.visibility = setDataVisibility(it)
-                    binding.tvEmptyPlaylists.visibility = setPlaceholderVisibility(it)
+                    binding.rvPlaylists.isGone = it.isEmpty()
+                    binding.tvEmptyPlaylists.isGone = it.isNotEmpty()
                     playlistAdapter.setupPlaylists(it)
                 }
             }
@@ -58,8 +56,8 @@ class HomeFragment : Fragment() {
                 getAllUserFavourites().collect {
                     it?.let {
                         val songs = it.favourites
-                        binding.rvFavourites.visibility = setDataVisibility(songs)
-                        binding.tvEmptyFavourites.visibility = setPlaceholderVisibility(songs)
+                        binding.rvFavourites.isGone = songs.isEmpty()
+                        binding.tvEmptyFavourites.isGone = songs.isNotEmpty()
                         favouriteAdapter.setupSongs(songs)
                     }
                 }
