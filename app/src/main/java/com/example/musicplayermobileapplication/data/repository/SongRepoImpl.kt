@@ -9,6 +9,7 @@ class SongRepoImpl(private val dao: SongDao): SongRepo {
     override fun validateSong(title: String, artist: String): Song?
     = dao.validateSong(title, artist)
     override fun getAllSongs(): Flow<List<Song>> = dao.getAllSongs()
+    override fun getAllSongsInstance(): List<Song> = dao.getAllSongsInstance()
     override fun getSongById(id: Int): Flow<Song?> = dao.getSongById(id)
     override fun updateSong(song: Song) { dao.updateSong(song) }
     override fun deleteSong(song: Song) { dao.deleteSong(song) }

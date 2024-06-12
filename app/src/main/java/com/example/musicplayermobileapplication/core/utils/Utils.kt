@@ -1,5 +1,6 @@
 package com.example.musicplayermobileapplication.core.utils
 
+import android.net.Uri
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -30,3 +31,9 @@ fun Int.format(): String {
     val seconds = TimeUnit.MILLISECONDS.toSeconds(this.toLong()) % 60
     return String.format("%02d:%02d", minutes, seconds)
 }
+fun Uri.isExternalStorageDocument(): Boolean
+= "com.android.externalstorage.documents" == this.authority
+fun Uri.isDownloadsDocument(): Boolean
+= "com.android.providers.downloads.documents" == this.authority
+fun Uri.isMediaDocument(): Boolean
+= "com.android.providers.media.documents" == this.authority

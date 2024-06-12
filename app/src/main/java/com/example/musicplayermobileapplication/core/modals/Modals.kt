@@ -64,8 +64,8 @@ class Modals @Inject constructor(
             playlistAdapter = PlaylistAdapter(playlists)
             playlistAdapter.listener = object: PlaylistAdapter.Listener {
                 override fun onClick(playlist: Playlist) {
-                    dialog.dismiss()
                     addRemoveFromPlaylist(playlist)
+                    dialog.dismiss()
                 }
             }
             rvPlaylists.adapter = playlistAdapter

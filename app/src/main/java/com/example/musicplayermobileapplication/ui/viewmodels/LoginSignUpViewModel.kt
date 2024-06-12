@@ -20,6 +20,7 @@ class LoginSignUpViewModel @Inject constructor(
     private val userRepo: UserRepo,
     private val authService: AuthService
 ): ViewModel() {
+    val imagePath: MutableLiveData<String> = MutableLiveData("/storage/emulated/0/Download/MONICA.jpg")
     val username: MutableLiveData<String> = MutableLiveData("")
     val password: MutableLiveData<String> = MutableLiveData("")
     val showToast: MutableLiveData<String> = MutableLiveData()
@@ -42,7 +43,8 @@ class LoginSignUpViewModel @Inject constructor(
                             username = username.value!!,
                             password = hashedPassword,
                             gender = selectedGender,
-                            age = age
+                            age = age,
+                            imagePath = imagePath.value!!
                         ))
                         delay(200)
                         validateLogin()

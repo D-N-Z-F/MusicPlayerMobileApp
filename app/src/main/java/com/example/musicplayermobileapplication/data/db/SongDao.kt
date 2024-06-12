@@ -17,6 +17,8 @@ interface SongDao {
     fun validateSong(title: String, artist: String): Song?
     @Query("SELECT * FROM Song")
     fun getAllSongs(): Flow<List<Song>>
+    @Query("SELECT * FROM Song")
+    fun getAllSongsInstance(): List<Song>
     @Query("SELECT * FROM Song WHERE id = :id")
     fun getSongById(id: Int): Flow<Song?>
     @Update(onConflict = OnConflictStrategy.REPLACE)

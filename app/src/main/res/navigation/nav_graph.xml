@@ -43,6 +43,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="playlistId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/editUserFragment"

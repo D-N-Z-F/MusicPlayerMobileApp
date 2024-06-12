@@ -15,8 +15,12 @@ interface PlaylistDao {
     fun addPlaylist(playlist: Playlist)
     @Query("SELECT * FROM Playlist WHERE userId = :userId")
     fun getAllUserPlaylists(userId: Int): Flow<List<Playlist>>
+    @Query("SELECT * FROM Playlist WHERE userId = :userId")
+    fun getAllUserPlaylistsInstance(userId: Int): List<Playlist>
     @Query("SELECT * FROM Playlist WHERE id = :id")
     fun getPlaylistById(id: Int): Flow<Playlist?>
+    @Query("SELECT * FROM Playlist WHERE id = :id")
+    fun getPlaylistByIdInstance(id: Int): Playlist?
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updatePlaylist(playlist: Playlist)
     @Delete

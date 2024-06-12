@@ -72,7 +72,7 @@ class ViewPlaylistFragment : Fragment() {
         songAdapter.listener = object : SongAdapter.Listener {
             override fun onClick(song: Song) {
                 findNavController().navigate(
-                    ViewPlaylistFragmentDirections.viewPlaylistToViewSong(song.id!!)
+                    ViewPlaylistFragmentDirections.viewPlaylistToViewSong(song.id!!, args.id)
                 )
             }
         }

@@ -28,10 +28,14 @@ class ViewSongViewModel @Inject constructor(
     private val authService: AuthService
 ) : ViewModel() {
     val showToast: MutableLiveData<String> = MutableLiveData()
+    private var _songId: MutableLiveData<Int> = MutableLiveData()
+    val songId: LiveData<Int> = _songId
     private var song: Song? = null
     private var favourite: Favourite? = null
+    private var prevSongs: MutableList<Int> = mutableListOf()
     private fun getUserId(): Int = authService.getUserId()
     fun setSong(song: Song) { this.song = song }
+    fun setSongId(id: Int) { _songId.postValue(id) }
     fun setFavourite(favourite: Favourite) { this.favourite = favourite }
     fun getSongById(id: Int): Flow<Song?> = songRepo.getSongById(id)
     fun getAllUserFavourites(): Flow<Favourite?> = favouriteRepo.getAllUserFavourites(getUserId())
@@ -76,4 +80,36 @@ class ViewSongViewModel @Inject constructor(
             showToast.postValue(if(isFavourited()) "You liked this!" else "You unliked this!")
         }
     }
+    fun loadRandomSong() {
+        Log.d("debugging", song.toString())
+        viewModelScope.launch(Dispatchers.IO) {
+            song?.let {
+                prevSongs.add(it.id!!)
+                val songList = songRepo.getAllSongsInstance().toMutableList()
+                songList.remove(it)
+                if(songList.isNotEmpty()) {
+                    setSongId(songList[(songList.indices).random()].id!!)
+                } else { showToast.postValue("No songs left in queue!") }
+            }
+        }
+    }
+    fun loadSongFromPlaylist(playlistId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            song?.let {song ->
+                prevSongs.add(song.id!!)
+                val playlist = playlistRepo.getPlaylistByIdInstance(playlistId)
+                playlist?.let {
+                    val songList = it.songs.toMutableList()
+                    songList.remove(song)
+                    if(songList.isNotEmpty()) {
+                        setSongId(songList[(songList.indices).random()].id!!)
+                    } else { showToast.postValue("No songs left in queue!") }
+                }
+            }
+        }
+    }
+    fun loadPrevSong() {
+        if(ableToPlayPrev()) { setSongId(prevSongs.removeLast()) }
+    }
+    fun ableToPlayPrev(): Boolean = prevSongs.isNotEmpty()
 }

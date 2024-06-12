@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -20,10 +21,12 @@ import com.bumptech.glide.Glide
 import com.example.musicplayermobileapplication.R
 import com.example.musicplayermobileapplication.core.modals.Modals
 import com.example.musicplayermobileapplication.core.utils.format
+import com.example.musicplayermobileapplication.data.model.Playlist
 import com.example.musicplayermobileapplication.data.model.Song
 import com.example.musicplayermobileapplication.databinding.FragmentViewSongBinding
 import com.example.musicplayermobileapplication.ui.viewmodels.ViewSongViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.launch
 import java.io.File
@@ -33,6 +36,7 @@ class ViewSongFragment : Fragment() {
     private lateinit var binding: FragmentViewSongBinding
     private val viewModel: ViewSongViewModel by viewModels()
     private val args: ViewSongFragmentArgs by navArgs()
+    private lateinit var playlists: List<Playlist>
     private lateinit var modal: Modals
 
     private lateinit var mediaPlayer: MediaPlayer
@@ -63,15 +67,22 @@ class ViewSongFragment : Fragment() {
         modal = Modals(requireContext())
         btnPlayPause = binding.btnPlayPause
         viewModel.run {
+            setSongId(args.id)
             lifecycleScope.launch {
-                getSongById(args.id).collect {
-                    it?.let {
-                        setSong(it)
-                        setupDetails(it)
-                        val audioFile = File(it.filePath)
-                        if(audioFile.exists()) { setupAudioPlayer(Uri.fromFile(audioFile)) }
+                songId.observe(viewLifecycleOwner) { id ->
+                    binding.btnPrev.isInvisible = !ableToPlayPrev()
+                    lifecycleScope.launch {
+                        getSongById(id).collect {
+                            it?.let {
+                                setSong(it)
+                                setupDetails(it)
+                                val audioFile = File(it.filePath)
+                                if(audioFile.exists()) { setupAudioPlayer(Uri.fromFile(audioFile)) }
+                            }
+                        }
                     }
                 }
+                getAllUserPlaylists().collect { playlists = it }
             }
             lifecycleScope.launch {
                 showToast.observe(viewLifecycleOwner) {
@@ -80,16 +91,6 @@ class ViewSongFragment : Fragment() {
                 getAllUserFavourites().collect {
                     it?.let { setFavourite(it) }
                     setLikedStatus()
-                }
-            }
-            binding.ivPlaylist.setOnClickListener {
-                lifecycleScope.launch {
-                    getAllUserPlaylists().collect {
-                        Log.d("debugging", it.toString())
-                        modal.showPlaylistsDialog(it) { playlist ->
-                            viewModel.addRemoveFromPlaylist(playlist)
-                        }
-                    }
                 }
             }
         }
@@ -105,7 +106,7 @@ class ViewSongFragment : Fragment() {
     private fun setupPlayback() {
         binding.run {
             durationEnd.text = mediaPlayer.duration.format()
-            (btnPlayPause).setOnClickListener {
+            btnPlayPause.setOnClickListener {
                 if(!mediaPlayer.isPlaying) { playAudio() }
                 else if(mediaPlayer.isPlaying) { pauseAudio() }
             }
@@ -130,7 +131,21 @@ class ViewSongFragment : Fragment() {
                     .load(image)
                     .into(ivImage)
             }
+            ivPlaylist.setOnClickListener {
+                modal.showPlaylistsDialog(playlists) { playlist ->
+                    viewModel.addRemoveFromPlaylist(playlist)
+                }
+            }
             ivFav.setOnClickListener { viewModel.addRemoveFavourite(song) }
+            btnNext.setOnClickListener {
+                resetAudio()
+                if(args.playlistId != -1) { viewModel.loadSongFromPlaylist(args.playlistId) }
+                else { viewModel.loadRandomSong() }
+            }
+            btnPrev.setOnClickListener {
+                resetAudio()
+                viewModel.loadPrevSong()
+            }
         }
     }
     private fun playAudio() {

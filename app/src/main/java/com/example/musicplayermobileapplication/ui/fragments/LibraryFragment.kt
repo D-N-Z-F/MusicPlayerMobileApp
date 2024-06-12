@@ -75,7 +75,7 @@ class LibraryFragment : Fragment() {
         favouriteAdapter.listener = object: FavouriteAdapter.Listener {
             override fun onClick(song: Song) {
                 findNavController().navigate(
-                    ContainerFragmentDirections.containerToViewSong(song.id!!)
+                    ContainerFragmentDirections.containerToViewSong(song.id!!, -1)
                 )
             }
         }

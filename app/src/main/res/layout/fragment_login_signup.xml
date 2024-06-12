@@ -111,7 +111,20 @@
                     android:layout_weight="1"
                     android:layout_marginStart="5dp"
                     android:background="@color/white"/>
+
             </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:elevation="4dp"
+                android:fontFamily="@font/semibold_poppins"
+                android:text="@string/select_image"
+                app:cornerRadius="4dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/mbSubmit"
