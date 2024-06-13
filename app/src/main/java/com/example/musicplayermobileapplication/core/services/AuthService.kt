@@ -7,6 +7,7 @@ import com.example.musicplayermobileapplication.core.utils.Constants
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
+// This class acts as a service class that provides authentication methods throughout the app.
 class AuthService @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
@@ -27,6 +28,5 @@ class AuthService @Inject constructor(
         }
     }
     fun isLoggedIn(): Boolean = sharedPreferences.getBoolean(Constants.IS_LOGGED_IN, false)
-
     fun getUserId(): Int = sharedPreferences.getInt(Constants.USER_ID, 0)
 }

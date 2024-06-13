@@ -36,6 +36,8 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Firstly, we set up the adapters, and then we collect 3 things, songs, user playlists,
+        // and user favourites.
         setupAdapters()
         viewModel.run {
             lifecycleScope.launch {

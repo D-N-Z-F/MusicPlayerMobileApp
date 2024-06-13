@@ -37,14 +37,18 @@ class AddEditPlaylistFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // First we set up the necessary details, if it's to update, then we get the playlist
+        // details and we display it, allowing the user to change.
         setupDetails()
         viewModel.run {
             lifecycleScope.launch {
                 showToast.observe(viewLifecycleOwner) {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
-                finish.collect {
-                    when(it) {
+                // Check type of action, if add or update playlist, remain at page,
+                // but if action was to delete playlist, then return to Library.
+                finish.collect { type ->
+                    when(type) {
                         0.toByte() -> findNavController().popBackStack()
                         1.toByte() -> findNavController().navigate(
                             AddEditPlaylistFragmentDirections.addEditPlaylistToContainer()

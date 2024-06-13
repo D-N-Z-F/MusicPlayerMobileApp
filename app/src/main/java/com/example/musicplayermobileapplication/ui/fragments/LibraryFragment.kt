@@ -36,6 +36,9 @@ class LibraryFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Similar to the Home page, we collect two things, the user playlists and the user
+        // favourites, then we allow the user to click on each item individually, or to add
+        // a new playlist.
         setupAdapter()
         viewModel.run {
             lifecycleScope.launch {

@@ -41,6 +41,9 @@ class SearchFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // This is the Search page, where users can filter or search for their specific songs
+        // or genres. We need to fetch all songs, and then based on query input or filter
+        // selected we then show the desired results, while also allowing the user to click.
         setupAdapter()
         lifecycleScope.launch {
             viewModel.getAllSongs().collect {

@@ -31,6 +31,8 @@ class EditUserFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Since this is only to update user, we have to set up their details, and they
+        // can see their original details.
         binding.run {
             npAge.minValue = 1
             npAge.maxValue = 150

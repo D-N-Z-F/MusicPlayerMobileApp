@@ -35,6 +35,9 @@ class ViewPlaylistFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // First we set up the adapter as usual, then we get the playlist details based on id,
+        // allowing the user to see the playlist's contained songs and it's details. Also allowing
+        // the option to edit.
         setupAdapter()
         viewModel.run {
             lifecycleScope.launch {

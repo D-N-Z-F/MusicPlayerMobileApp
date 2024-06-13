@@ -11,7 +11,7 @@ import com.example.musicplayermobileapplication.data.model.Statuses
 import java.io.File
 import java.util.concurrent.TimeUnit
 
-// Extension Functions
+// Extension Functions to help shorten code as well as make it more readable.
 fun File.isImage(): Boolean = Regex(Constants.IMAGE_REG).containsMatchIn(this.name)
 fun File.isAudio(): Boolean = Regex(Constants.AUDIO_REG).containsMatchIn(this.name)
 fun String.capitalize(): String = this.replaceFirstChar { it.uppercase() }

@@ -22,22 +22,18 @@ class ContainerFragment : Fragment() {
         binding = FragmentContainerBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        // This sets up the main page with 4 different tabs.
         binding.vpTabs.adapter = TabAdapter(
             this@ContainerFragment,
             listOf(
                 HomeFragment(), SearchFragment(), LibraryFragment(), ProfileFragment()
             )
         )
-
         val tabIcons = listOf(R.drawable.ic_home, R.drawable.ic_search,
             R.drawable.ic_playlist, R.drawable.ic_profile)
-
         val tabTexts = listOf("Home", "Search", "Library", "Profile")
-
         TabLayoutMediator(binding.tlTabs, binding.vpTabs) { tab, position ->
             val tabBinding = LayoutTabItemBinding.inflate(LayoutInflater.from(requireContext()))
             tabBinding.tabIcon.setImageResource(tabIcons[position])

@@ -33,6 +33,7 @@ class ViewSongViewModel @Inject constructor(
     private var song: Song? = null
     private var favourite: Favourite? = null
     private var prevSongs: MutableList<Int> = mutableListOf()
+
     private fun getUserId(): Int = authService.getUserId()
     fun setSong(song: Song) { this.song = song }
     fun setSongId(id: Int) { _songId.postValue(id) }

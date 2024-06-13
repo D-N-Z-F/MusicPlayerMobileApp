@@ -39,6 +39,9 @@ class ViewSongFragment : Fragment() {
     private lateinit var playlists: List<Playlist>
     private lateinit var modal: Modals
 
+    // Firstly, we initialise the much needed components for audio playing. The media player
+    // for audioPlayback,  the runnable to perform the timestamp and progress bar change,
+    // and the handler to set intervals for the runnable.
     private lateinit var mediaPlayer: MediaPlayer
     private val handler = Handler(Looper.getMainLooper())
     private val runnable = object: Runnable {
@@ -64,6 +67,12 @@ class ViewSongFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Here, we get the song details based on the id, and then we build the mediaPlayer,
+        // and allow the user to either favourite their song or add to their playlists.
+        // The user can also play the current song, the previous song, or the next song.
+        // If the user viewed the current song from outside a playlist, then the next song
+        // will be a random song picked from all songs. If viewed from a playlist, then the
+        // next song will be played from the playlist's song list.
         modal = Modals(requireContext())
         btnPlayPause = binding.btnPlayPause
         viewModel.run {

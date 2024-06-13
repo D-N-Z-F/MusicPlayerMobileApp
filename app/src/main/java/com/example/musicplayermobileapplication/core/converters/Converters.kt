@@ -9,8 +9,11 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 import java.time.LocalDateTime
 
+// This class helps to convert types that are unrecognized by Room to a Json format for storage,
+// and converts them back to their original types when retrieved by using Gson.
 class Converters {
     private val gson = Gson()
+
     @TypeConverter
     fun stringToDate(data: String?): LocalDateTime? = data?.let { LocalDateTime.parse(it) }
     @TypeConverter
@@ -29,7 +32,6 @@ class Converters {
     }
     @TypeConverter
     fun playlistsToString(data: List<Playlist>?): String? = data?.let { gson.toJson(it) }
-
     @TypeConverter
     fun stringToSongs(data: String?): List<Song>? {
         val listType: Type = object: TypeToken<List<Song>>() {}.type

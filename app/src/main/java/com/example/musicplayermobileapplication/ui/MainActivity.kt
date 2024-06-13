@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        // When application is launched, check external storage permissions, if not authorised,
+        // then request to allow access, else if already authorised, skip this step and proceed.
         viewModel.checkExternalStoragePermissions()
     }
 }

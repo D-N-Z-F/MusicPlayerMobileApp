@@ -38,6 +38,8 @@ class ProfileFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // This is the user Profile page, where we get the user details and display it,
+        // allowing the user to edit or to logout.
         viewModel.run {
             lifecycleScope.launch {
                 showToast.observe(viewLifecycleOwner) {

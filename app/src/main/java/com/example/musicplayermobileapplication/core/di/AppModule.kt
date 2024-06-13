@@ -20,6 +20,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+// By utilizing Hilt, this class stores the essential app modules to help reduce boilerplate
+// code and helps keep things organized. Mainly used to inject dependencies when needed.
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
@@ -27,26 +29,24 @@ class AppModule {
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences(Constants.AUTH_PREFS, Context.MODE_PRIVATE)
-
     @Provides
     @Singleton
     fun provideRoomDB(@ApplicationContext context: Context): MusicPlayerDatabase =
-        Room.databaseBuilder(context, MusicPlayerDatabase::class.java, MusicPlayerDatabase.NAME)
-            .fallbackToDestructiveMigration().build()
-
+        Room.databaseBuilder(
+            context, MusicPlayerDatabase::class.java, MusicPlayerDatabase.NAME
+        ).fallbackToDestructiveMigration().build()
     @Provides
     @Singleton
     fun provideUserRepo(db: MusicPlayerDatabase): UserRepo = UserRepoImpl(db.userDao())
-
     @Provides
     @Singleton
     fun provideSongRepo(db: MusicPlayerDatabase): SongRepo = SongRepoImpl(db.songDao())
-
     @Provides
     @Singleton
-    fun providePlaylistRepo(db: MusicPlayerDatabase): PlaylistRepo = PlaylistRepoImpl(db.playlistDao())
-
+    fun providePlaylistRepo(db: MusicPlayerDatabase): PlaylistRepo =
+        PlaylistRepoImpl(db.playlistDao())
     @Provides
     @Singleton
-    fun provideFavouriteRepo(db: MusicPlayerDatabase): FavouriteRepo = FavouriteRepoImpl(db.favouriteDao())
+    fun provideFavouriteRepo(db: MusicPlayerDatabase): FavouriteRepo =
+        FavouriteRepoImpl(db.favouriteDao())
 }

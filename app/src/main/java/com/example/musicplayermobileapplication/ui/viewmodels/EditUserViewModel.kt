@@ -63,7 +63,6 @@ class EditUserViewModel @Inject constructor(
             }
         }
     }
-
     private fun updateUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             try {

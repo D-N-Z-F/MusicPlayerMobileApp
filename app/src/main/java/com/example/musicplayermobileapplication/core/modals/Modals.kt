@@ -19,11 +19,15 @@ import com.example.musicplayermobileapplication.ui.adapter.PlaylistAdapter
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
+// This class acts as a base for all modals used throughout the app, such as the
+// Confirmation Dialog, Filter Dialog, and the Playlists Dialog.
 class Modals @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
     private lateinit var playlistAdapter: PlaylistAdapter
-    fun showConfirmationDialog(header: String, body: String, onConfirm: () -> Unit) {
+    fun showConfirmationDialog(
+        header: String, body: String, onConfirm: () -> Unit
+    ) {
         val dialogView = LayoutAlertViewBinding.inflate(LayoutInflater.from(context))
         val dialog = AlertDialog.Builder(context).setView(dialogView.root).create()
         dialogView.run {
@@ -34,7 +38,9 @@ class Modals @Inject constructor(
         }
         setupDialog(dialog)
     }
-    fun showFilterDialog(selectedGenre: Genres? ,onConfirm: (Genres?) -> Unit) {
+    fun showFilterDialog(
+        selectedGenre: Genres? ,onConfirm: (Genres?) -> Unit
+    ) {
         val dialogView = LayoutFilterViewBinding.inflate(LayoutInflater.from(context))
         val dialog = AlertDialog.Builder(context).setView(dialogView.root).create()
         var newSelection: Genres? = null
@@ -57,15 +63,16 @@ class Modals @Inject constructor(
         }
         setupDialog(dialog)
     }
-    fun showPlaylistsDialog(playlists: List<Playlist>, addRemoveFromPlaylist: (Playlist) -> Unit) {
+    fun showPlaylistsDialog(
+        playlists: List<Playlist>, addRemoveFromPlaylist: (Playlist) -> Unit
+    ) {
         val dialogView = LayoutPlaylistsViewBinding.inflate(LayoutInflater.from(context))
         val dialog = AlertDialog.Builder(context).setView(dialogView.root).create()
         dialogView.run {
             playlistAdapter = PlaylistAdapter(playlists)
             playlistAdapter.listener = object: PlaylistAdapter.Listener {
                 override fun onClick(playlist: Playlist) {
-                    addRemoveFromPlaylist(playlist)
-                    dialog.dismiss()
+                    addRemoveFromPlaylist(playlist); dialog.dismiss()
                 }
             }
             rvPlaylists.adapter = playlistAdapter

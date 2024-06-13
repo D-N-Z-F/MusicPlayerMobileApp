@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 import java.io.File
 import javax.inject.Inject
 
+// This class acts as a service class that provides storage access methods throughout the app.
 class StorageService @Inject constructor(
     @ApplicationContext private val context: Context,
     private val songRepo: SongRepo

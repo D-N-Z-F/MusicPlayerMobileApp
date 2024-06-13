@@ -13,6 +13,8 @@ import com.example.musicplayermobileapplication.databinding.LayoutSongHorizontal
 import com.example.musicplayermobileapplication.databinding.LayoutSongVerticalItemBinding
 import java.io.File
 
+// This is the adapter for Song, which allows for two types of layout designs, one for
+// vertical, and one for horizontal.
 class SongAdapter(
     private var songs: List<Song>,
     private val viewType: Int

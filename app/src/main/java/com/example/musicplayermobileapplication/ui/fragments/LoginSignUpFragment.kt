@@ -48,6 +48,9 @@ class LoginSignUpFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // When we first enter the Login page at application start up, we check if a user is
+        // already logged in, if there is we directly enter Home page, if not, set up the
+        // necessary components and allow the user to register or login.
         checkLoginStatus()
         setupLauncher()
         lifecycleScope.launch {
@@ -105,10 +108,8 @@ class LoginSignUpFragment : Fragment() {
         resultLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
-            Log.d("debugging", result.toString())
             if(result.resultCode == Activity.RESULT_OK && result.data != null) {
-                Log.d("uri_debugging102", result.data.toString())
-                Log.d("uri_debugging103", result.data?.data.toString())
+                // If the result is OK, then we get the imagePath from the uri.
                 result.data!!.data?.let { uri ->
                     val imagePath = getFilePathFromUri(uri)
                     imagePath?.let {
@@ -119,6 +120,8 @@ class LoginSignUpFragment : Fragment() {
             }
         }
     }
+    // This function identifies which type of Document the Uri is of, and then perform the
+    // necessary procedures to obtain the raw file path accordingly.
     private fun getFilePathFromUri(uri: Uri): String? {
         if(DocumentsContract.isDocumentUri(requireContext(), uri)) {
             val docId = DocumentsContract.getDocumentId(uri)
@@ -156,6 +159,9 @@ class LoginSignUpFragment : Fragment() {
         }
         return null
     }
+    // After identifying the type of Document, if needed, use the below function to get the
+    // actual filepath using cursor and contentResolver, which is needed for more complex
+    // extractions.
     private fun getDataColumn(
         uri: Uri?, selection: String? = null, selectionArgs: Array<String>? = null
     ): String? {

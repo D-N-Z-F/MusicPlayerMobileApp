@@ -13,6 +13,8 @@ import com.example.musicplayermobileapplication.databinding.LayoutSongVerticalIt
 import com.example.musicplayermobileapplication.databinding.LayoutSongHorizontalItemBinding
 import java.io.File
 
+// This is the adapter for Favourite, which allows for two types of layout designs, one for
+// vertical, and one for horizontal.
 class FavouriteAdapter(
     private var songs: List<Song>,
     private val viewType: Int
